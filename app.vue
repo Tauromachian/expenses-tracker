@@ -6,7 +6,7 @@ let savedType = ref(null);
 let visibleCategories = ref(false);
 let visibleTypes = ref(false);
 
-const { data: categories } = await useFetch("/api/constants");
+const { data: categories } = await useFetch("/api/constants/categories");
 const types = ref(["One time", "Monthly", "Anual"]);
 
 function onSubmit(values) {
@@ -19,9 +19,8 @@ function validateTextField(value) {
 }
 function validateNumberField(value) {
   if (!value) return "This field is required";
-  const num = parseFloat(value);
-  if (isNaN(num) || num < 0) return "Invalid amount";
-  return true;
+  if (/^-?\d*\.?\d+$/.test(value) && parseFloat(value) > 0) return true;
+  return "Invalid amount";
 }
 
 function handleBlurCategory() {
