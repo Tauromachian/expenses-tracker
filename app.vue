@@ -186,20 +186,7 @@ function handleBlurType() {
                   class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
                   @click="savedCategory = category.name"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="{1.5}"
-                    stroke="currentColor"
-                    class="w-8 pr-2 pl-2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      :d="category.path"
-                    />
-                  </svg>
+                  <Icon :name="category.icon" class="w-9 h-9 px-2"/>
                   <span>{{ category.name }}</span>
                 </div>
               </div>
