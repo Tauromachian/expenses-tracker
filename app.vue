@@ -1,4 +1,12 @@
 <script setup>
+// TODO
+// -make the filter for both autocompletes
+// -scroll in categories
+// -button to send form
+// -make transitions to all the form
+// -make a textfield class for reduce classes use
+// -make the form responsive in larger screens
+
 let inputCategory = ref(null);
 let savedCategory = ref(null);
 let inputType = ref(null);
@@ -173,7 +181,7 @@ function handleBlurType() {
                 class="text-red-500 absolute block"
               />
               <div
-                class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute"
+                class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute max-h-32 overflow-y-scroll scrollbar-none"
                 :class="{ hidden: !visibleCategories }"
               >
                 <div v-if="!categories" class="text-center">
@@ -185,7 +193,7 @@ function handleBlurType() {
                   class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
                   @click="savedCategory = category.name"
                 >
-                  <Icon :name="category.icon" class="w-9 h-9 px-2"/>
+                  <Icon :name="category.icon" class="w-9 h-9 px-2" />
                   <span>{{ category.name }}</span>
                 </div>
               </div>
