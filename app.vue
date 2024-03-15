@@ -2,7 +2,6 @@
 // TODO
 // -button to send form
 // -make transitions to all the form
-// -make a textfield class for reduce classes use
 // -make the form responsive in larger screens
 
 const { data: categories } = await useFetch("/api/constants/categories");
@@ -93,7 +92,7 @@ function handleBlurType() {
                 type="text"
                 name="name"
                 :rules="validateTextField"
-                class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800"
+                class="text-field"
               />
               <ErrorMessage name="name" class="text-red-500 block absolute" />
             </div>
@@ -105,7 +104,7 @@ function handleBlurType() {
                 name="description"
                 :rules="validateTextField"
                 placeholder="Add expense information"
-                class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800"
+                class="text-field"
               />
               <ErrorMessage
                 name="description"
@@ -119,7 +118,7 @@ function handleBlurType() {
                 type="text"
                 name="expense"
                 :rules="validateNumberField"
-                class="pl-12 w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800 peer"
+                class="pl-12 text-field peer"
               />
               <div
                 class="bg-gray-200 absolute inset-y-0 left-0 px-2 flex items-center pointer-events-none rounded-s-lg border peer-focus:border-gray-800"
@@ -151,7 +150,7 @@ function handleBlurType() {
                 type="text"
                 name="types"
                 v-model="inputType"
-                class="relative w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800 peer"
+                class="relative text-field peer"
                 :rules="validateTextField"
                 @focus="visibleTypes = true"
                 @blur="handleBlurType"
@@ -181,7 +180,7 @@ function handleBlurType() {
                 type="text"
                 name="categories"
                 v-model="inputCategory"
-                class="relative w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800 peer"
+                class="relative text-field peer"
                 :rules="validateTextField"
                 @focus="visibleCategories = true"
                 @blur="handleBlurCategory"
