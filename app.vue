@@ -1,6 +1,42 @@
 <script setup>
-let visible = ref(false);
+let inputCategory = ref(null);
+let savedCategory = ref(null);
+let inputType = ref(null);
+let savedType = ref(null);
+let visibleCategories = ref(false);
+let visibleTypes = ref(false);
+
 const { data: categories } = await useFetch("/api/constants");
+const types = ref(["One time", "Monthly", "Anual"]);
+
+function onSubmit(values) {
+  console.log(values);
+}
+
+function validateTextField(value) {
+  if (!value) return "This field is required";
+  return true;
+}
+function validateNumberField(value) {
+  if (!value) return "This field is required";
+  const num = parseFloat(value);
+  if (isNaN(num) || num < 0) return "Invalid amount";
+  return true;
+}
+
+function handleBlurCategory() {
+  setTimeout(() => {
+    inputCategory.value = savedCategory.value;
+    visibleCategories.value = false;
+  }, 110);
+}
+
+function handleBlurType() {
+  setTimeout(() => {
+    inputType.value = savedType.value;
+    visibleTypes.value = false;
+  }, 110);
+}
 </script>
 
 <template>
@@ -32,35 +68,40 @@ const { data: categories } = await useFetch("/api/constants");
           </div>
         </div>
 
-        <div class="mx-7 my-4 text-sm">
+        <Form @submit="onSubmit" class="mx-7 my-4 text-sm">
           <div>
-            <label for="name" type="text">Expense</label>
-            <div class="block mt-1 mb-3 text-gray-800">
-              <input
+            <label for="name" type="text">Expense name</label>
+            <div class="block mt-1 mb-5 text-gray-800">
+              <Field
                 type="text"
                 name="name"
-                id="name"
+                :rules="validateTextField"
                 class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800"
               />
+              <ErrorMessage name="name" class="text-red-500 block absolute" />
             </div>
 
             <label for="description" type="text">Description</label>
-            <div class="block mt-1 mb-3 text-gray-800">
-              <input
+            <div class="block mt-1 mb-5 text-gray-800">
+              <Field
                 type="text"
                 name="description"
-                id="description"
+                :rules="validateTextField"
                 placeholder="Add expense information"
                 class="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800"
+              />
+              <ErrorMessage
+                name="description"
+                class="text-red-500 block absolute"
               />
             </div>
 
             <label for="expense" type="text">Amount</label>
-            <div class="block mt-1 mb-3 text-gray-800 relative">
-              <input
+            <div class="block mt-1 mb-5 text-gray-800 relative">
+              <Field
                 type="text"
                 name="expense"
-                id="expense"
+                :rules="validateNumberField"
                 class="pl-12 w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800 peer"
               />
               <div
@@ -81,44 +122,90 @@ const { data: categories } = await useFetch("/api/constants");
                   />
                 </svg>
               </div>
+              <ErrorMessage
+                name="expense"
+                class="text-red-500 absolute block"
+              />
             </div>
 
-            <label for="types">Type of expense</label>
-            <div class="block mt-1 mb-3 text-gray-800 relative">
-              <input
+            <label for="types">Type</label>
+            <div class="block mt-1 mb-5 text-gray-800 relative">
+              <Field
                 type="text"
                 name="types"
-                id="types"
+                v-model="inputType"
                 class="relative w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800 peer"
-                @focus="visible = true"
-                @blur="visible = false"
+                :rules="validateTextField"
+                @focus="visibleTypes = true"
+                @blur="handleBlurType"
               />
-
+              <ErrorMessage name="types" class="text-red-500 absolute block" />
               <div
-                v-if="visible"
-                class="bg-white w-full mt-1 px-3 py-2 rounded-lg border border-gray-300 absolute"
+                class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10"
+                :class="{ hidden: !visibleTypes }"
               >
-                <div v-for="category in categories" class="flex">
+                <div v-if="!types" class="text-center">
+                  No types match your search
+                </div>
+                <div
+                  v-else
+                  v-for="type in types"
+                  class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
+                  @click="savedType = type"
+                >
+                  <span>{{ type }}</span>
+                </div>
+              </div>
+            </div>
+
+            <label for="categories">Category</label>
+            <div class="block mt-1 mb-3 text-gray-800 relative">
+              <Field
+                type="text"
+                name="categories"
+                v-model="inputCategory"
+                class="relative w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-gray-800 peer"
+                :rules="validateTextField"
+                @focus="visibleCategories = true"
+                @blur="handleBlurCategory"
+              />
+              <ErrorMessage
+                name="categories"
+                class="text-red-500 absolute block"
+              />
+              <div
+                class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute"
+                :class="{ hidden: !visibleCategories }"
+              >
+                <div v-if="!categories" class="text-center">
+                  No categories match your search
+                </div>
+                <div
+                  v-else
+                  v-for="category in categories"
+                  class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
+                  @click="savedCategory = category.name"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="{1.5}"
                     stroke="currentColor"
-                    class="w-6 pr-2"
+                    class="w-8 pr-2 pl-2"
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       :d="category.path"
-                      />
+                    />
                   </svg>
                   <span>{{ category.name }}</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Form>
       </div>
     </main>
   </body>
