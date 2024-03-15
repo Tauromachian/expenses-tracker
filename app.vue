@@ -1,30 +1,29 @@
 <script setup>
 // TODO
-// -button to send form
 // -make transitions to all the form
 // -make the form responsive in larger screens
 
 const { data: categories } = await useFetch("/api/constants/categories");
 const types = ref(["One time", "Monthly", "Anual"]);
 
-let inputCategory = ref('');
-let savedCategory = ref('');
-let inputType = ref('');
-let savedType = ref('');
+let inputCategory = ref("");
+let savedCategory = ref("");
+let inputType = ref("");
+let savedType = ref("");
 let visibleCategories = ref(false);
 let visibleTypes = ref(false);
 
 let filteredCategories = computed(() => {
   return categories.value.filter((item) => {
-    return item.name.toLowerCase().includes(inputCategory.value.toLowerCase())
-  })
-})
+    return item.name.toLowerCase().includes(inputCategory.value.toLowerCase());
+  });
+});
 
 let filteredTypes = computed(() => {
   return types.value.filter((item) => {
-    return item.toLowerCase().includes(inputType.value.toLowerCase())
-  })
-})
+    return item.toLowerCase().includes(inputType.value.toLowerCase());
+  });
+});
 
 function onSubmit(values) {
   console.log(values);
@@ -206,6 +205,16 @@ function handleBlurType() {
                   <span>{{ category.name }}</span>
                 </div>
               </div>
+            </div>
+
+            <div class="flex justify-end py-5">
+              <button class="px-3 py-2 bg-red-50 text-red-500 rounded-full hover:bg-red-500 hover:text-white">
+                <span>Submit</span>
+                <Icon
+                  name="material-symbols-light:arrow-forward-rounded"
+                  class="ml-1 w-5 h-5"
+                />
+              </button>
             </div>
           </div>
         </Form>
