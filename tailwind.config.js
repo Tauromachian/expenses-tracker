@@ -14,6 +14,9 @@ export default {
         nunito: ["Nunito"],
       },
     },
+    screens: {
+      mobile: "449px",
+    },
   },
   plugins: [require("tailwind-scrollbar")],
 };

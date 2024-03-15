@@ -56,9 +56,11 @@ function handleBlurType() {
 
 <template>
   <body class="bg-gray-100 text-gray-600 font-nunito">
-    <main>
-      <div class="bg-white w-full max-w-sm">
-        <div class="bg-gray-200 flex">
+    <main class="h-screen flex justify-center mobile:items-center">
+      <div
+        class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md"
+      >
+        <div class="bg-teal-700 text-white flex">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +68,7 @@ function handleBlurType() {
               viewBox="0 0 24 24"
               strokeWidth="{1.5}"
               stroke="currentColor"
-              class="w-10 text-red-500 bg-white rounded-xl my-5 mx-7 shadow-md p-2"
+              class="w-10 text-teal-700 bg-white rounded-xl my-5 mx-7 shadow-md p-2"
             >
               <path
                 strokeLinecap="round"
@@ -76,7 +78,7 @@ function handleBlurType() {
             </svg>
           </div>
           <div class="my-auto">
-            <span class="font-bold block text-gray-700">Add new expense</span>
+            <span class="font-bold block text-white">Add new expense</span>
             <span class="text-xs">
               Fill in the form with the details of the expense
             </span>
@@ -120,7 +122,7 @@ function handleBlurType() {
                 class="pl-12 text-field peer"
               />
               <div
-                class="bg-gray-200 absolute inset-y-0 left-0 px-2 flex items-center pointer-events-none rounded-s-lg border peer-focus:border-gray-800"
+                class="bg-teal-50 text-teal-700 absolute inset-y-0 left-0 px-2 flex items-center pointer-events-none rounded-s-lg border peer-focus:border-teal-800"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -201,14 +203,16 @@ function handleBlurType() {
                   class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
                   @click="savedCategory = category.name"
                 >
-                  <Icon :name="category.icon" class="w-9 h-9 px-2" />
+                  <Icon :name="category.icon" class="w-9 h-9 px-2" :color="category.color"/>
                   <span>{{ category.name }}</span>
                 </div>
               </div>
             </div>
 
-            <div class="flex justify-end py-5">
-              <button class="px-3 py-2 bg-red-50 text-red-500 rounded-full hover:bg-red-500 hover:text-white">
+            <div class="flex justify-end pt-5 pb-2">
+              <button
+                class="px-3 py-2 bg-teal-50 text-teal-700 rounded-full hover:bg-teal-700 hover:text-white"
+              >
                 <span>Submit</span>
                 <Icon
                   name="material-symbols-light:arrow-forward-rounded"
