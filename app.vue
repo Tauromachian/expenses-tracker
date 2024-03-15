@@ -1,21 +1,31 @@
 <script setup>
 // TODO
-// -make the filter for both autocompletes
-// -scroll in categories
 // -button to send form
 // -make transitions to all the form
 // -make a textfield class for reduce classes use
 // -make the form responsive in larger screens
 
-let inputCategory = ref(null);
-let savedCategory = ref(null);
-let inputType = ref(null);
-let savedType = ref(null);
+const { data: categories } = await useFetch("/api/constants/categories");
+const types = ref(["One time", "Monthly", "Anual"]);
+
+let inputCategory = ref('');
+let savedCategory = ref('');
+let inputType = ref('');
+let savedType = ref('');
 let visibleCategories = ref(false);
 let visibleTypes = ref(false);
 
-const { data: categories } = await useFetch("/api/constants/categories");
-const types = ref(["One time", "Monthly", "Anual"]);
+let filteredCategories = computed(() => {
+  return categories.value.filter((item) => {
+    return item.name.toLowerCase().includes(inputCategory.value.toLowerCase())
+  })
+})
+
+let filteredTypes = computed(() => {
+  return types.value.filter((item) => {
+    return item.toLowerCase().includes(inputType.value.toLowerCase())
+  })
+})
 
 function onSubmit(values) {
   console.log(values);
@@ -151,12 +161,12 @@ function handleBlurType() {
                 class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10"
                 :class="{ hidden: !visibleTypes }"
               >
-                <div v-if="!types" class="text-center">
+                <div v-if="!filteredTypes.length" class="text-center">
                   No types match your search
                 </div>
                 <div
                   v-else
-                  v-for="type in types"
+                  v-for="type in filteredTypes"
                   class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
                   @click="savedType = type"
                 >
@@ -184,12 +194,12 @@ function handleBlurType() {
                 class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute max-h-32 overflow-y-scroll scrollbar-none"
                 :class="{ hidden: !visibleCategories }"
               >
-                <div v-if="!categories" class="text-center">
+                <div v-if="!filteredCategories.length" class="text-center">
                   No categories match your search
                 </div>
                 <div
                   v-else
-                  v-for="category in categories"
+                  v-for="category in filteredCategories"
                   class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
                   @click="savedCategory = category.name"
                 >
