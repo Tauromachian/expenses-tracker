@@ -1,7 +1,6 @@
 <script setup>
 // TODO
 // -make transitions to all the form
-// -make the form responsive in larger screens
 
 const { data: categories } = await useFetch("/api/constants/categories");
 const types = ref(["One time", "Monthly", "Anual"]);
@@ -33,6 +32,7 @@ function validateTextField(value) {
   if (!value) return "This field is required";
   return true;
 }
+
 function validateNumberField(value) {
   if (!value) return "This field is required";
   if (/^-?\d*\.?\d+$/.test(value) && parseFloat(value) > 0) return true;
@@ -52,11 +52,16 @@ function handleBlurType() {
     visibleTypes.value = false;
   }, 110);
 }
+
+function contactMe(url) {
+  console.log(url);
+  window.open(url);
+}
 </script>
 
 <template>
-  <body class="bg-gray-100 text-gray-600 font-nunito">
-    <main class="h-screen flex justify-center mobile:items-center">
+  <div id="app" class="bg-gray-100 text-gray-600 font-nunito">
+    <main class="flex justify-center mobile:items-center h-screen">
       <div
         class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md"
       >
@@ -85,7 +90,7 @@ function handleBlurType() {
           </div>
         </div>
 
-        <Form @submit="onSubmit" class="mx-7 my-4 text-sm">
+        <Form @submit="onSubmit" class="mx-7 my-4 text-sm pt-3">
           <div>
             <label for="name" type="text">Expense name</label>
             <div class="block mt-1 mb-5 text-gray-800">
@@ -203,7 +208,11 @@ function handleBlurType() {
                   class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
                   @click="savedCategory = category.name"
                 >
-                  <Icon :name="category.icon" class="w-9 h-9 px-2" :color="category.color"/>
+                  <Icon
+                    :name="category.icon"
+                    class="w-9 h-9 px-2"
+                    :color="category.color"
+                  />
                   <span>{{ category.name }}</span>
                 </div>
               </div>
@@ -224,5 +233,33 @@ function handleBlurType() {
         </Form>
       </div>
     </main>
-  </body>
+    <footer class="flex flex-col items-center font-mono text-gray-600 pb-5">
+      <hr class="h-2 w-full max-w-md pb-5" />
+      <div class="flex gap-2 mb-2">
+        <Icon
+          name="uil:whatsapp"
+          class="w-7 h-7 cursor-pointer hover:text-gray-800"
+          @click="contactMe(`https://wa.me/5356653917`)"
+        />
+        <Icon
+          name="uil:telegram"
+          class="w-7 h-7 cursor-pointer hover:text-gray-800"
+          @click="contactMe(`https://t.me/cmorellr`)"
+        />
+        <Icon
+          name="uil:github"
+          class="w-7 h-7 cursor-pointer hover:text-gray-800"
+          @click="contactMe(`https://github.com/pfrito`)"
+        />
+      </div>
+      <div>
+        <span>©2024 Designed, created and maintained by </span>
+        <a
+          href="https://github.com/pfrito"
+          class="uppercase hover:text-gray-800"
+          >Carlos</a
+        >
+      </div>
+    </footer>
+  </div>
 </template>
