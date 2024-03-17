@@ -1,7 +1,7 @@
 <script setup>
-// TODO
-// -make transitions to all the form
+import { useExpenseStore } from "./stores/expenses";
 
+const expenseStore = useExpenseStore();
 const { data: categories } = await useFetch("/api/constants/categories");
 const types = ref(["One time", "Monthly", "Anual"]);
 
@@ -11,6 +11,9 @@ let inputType = ref("");
 let savedType = ref("");
 let visibleCategories = ref(false);
 let visibleTypes = ref(false);
+
+// expenseStore.clearExpenses();
+console.log(expenseStore.getExpenses.value);
 
 let filteredCategories = computed(() => {
   return categories.value.filter((item) => {
@@ -25,7 +28,7 @@ let filteredTypes = computed(() => {
 });
 
 function onSubmit(values) {
-  console.log(values);
+  expenseStore.addExpense(values);
 }
 
 function validateTextField(value) {
@@ -54,7 +57,6 @@ function handleBlurType() {
 }
 
 function contactMe(url) {
-  console.log(url);
   window.open(url);
 }
 </script>
@@ -65,7 +67,7 @@ function contactMe(url) {
       <div
         class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md"
       >
-        <div class="bg-teal-700 text-white flex rounded-t-md">
+        <div class="bg-teal-700 text-white flex mobile:rounded-t-md">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -262,11 +264,11 @@ function contactMe(url) {
           @click="contactMe(`https://github.com/pfrito`)"
         />
       </div>
-      <div>
+      <div class="flex flex-col mobile:flex-row items-center">
         <span>©2024 Designed, created and maintained by </span>
         <a
           href="https://github.com/pfrito"
-          class="uppercase hover:text-gray-800"
+          class="uppercase hover:text-gray-800 mobile:ml-2"
           >Carlos</a
         >
       </div>
