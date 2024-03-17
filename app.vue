@@ -65,7 +65,7 @@ function contactMe(url) {
       <div
         class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md"
       >
-        <div class="bg-teal-700 text-white flex">
+        <div class="bg-teal-700 text-white flex rounded-t-md">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -90,9 +90,13 @@ function contactMe(url) {
           </div>
         </div>
 
-        <Form @submit="onSubmit" class="mx-7 my-4 text-sm pt-3">
+        <Form
+          @submit="onSubmit"
+          class="mx-7 my-4 text-sm pt-3"
+          v-slot="{ errors }"
+        >
           <div>
-            <label for="name" type="text">Expense name</label>
+            <label for="name" type="text">Name</label>
             <div class="block mt-1 mb-5 text-gray-800">
               <Field
                 type="text"
@@ -100,7 +104,10 @@ function contactMe(url) {
                 :rules="validateTextField"
                 class="text-field"
               />
-              <ErrorMessage name="name" class="text-red-500 block absolute" />
+              <span
+                class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+                >{{ errors.name }}</span
+              >
             </div>
 
             <label for="description" type="text">Description</label>
@@ -112,10 +119,10 @@ function contactMe(url) {
                 placeholder="Add expense information"
                 class="text-field"
               />
-              <ErrorMessage
-                name="description"
-                class="text-red-500 block absolute"
-              />
+              <span
+                class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+                >{{ errors.description }}</span
+              >
             </div>
 
             <label for="expense" type="text">Amount</label>
@@ -144,10 +151,10 @@ function contactMe(url) {
                   />
                 </svg>
               </div>
-              <ErrorMessage
-                name="expense"
-                class="text-red-500 absolute block"
-              />
+              <span
+                class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+                >{{ errors.expense }}</span
+              >
             </div>
 
             <label for="types">Type</label>
@@ -161,7 +168,10 @@ function contactMe(url) {
                 @focus="visibleTypes = true"
                 @blur="handleBlurType"
               />
-              <ErrorMessage name="types" class="text-red-500 absolute block" />
+              <span
+                class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+                >{{ errors.types }}</span
+              >
               <div
                 class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10"
                 :class="{ hidden: !visibleTypes }"
@@ -191,10 +201,10 @@ function contactMe(url) {
                 @focus="visibleCategories = true"
                 @blur="handleBlurCategory"
               />
-              <ErrorMessage
-                name="categories"
-                class="text-red-500 absolute block"
-              />
+              <span
+                class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+                >{{ errors.categories }}</span
+              >
               <div
                 class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute max-h-32 overflow-y-scroll scrollbar-none"
                 :class="{ hidden: !visibleCategories }"
@@ -220,7 +230,7 @@ function contactMe(url) {
 
             <div class="flex justify-end pt-5 pb-2">
               <button
-                class="px-3 py-2 bg-teal-50 text-teal-700 rounded-full hover:bg-teal-700 hover:text-white"
+                class="px-3 py-2 bg-teal-50 text-teal-700 rounded-full hover:bg-teal-700 hover:text-white transition ease-in-out duration-100"
               >
                 <span>Submit</span>
                 <Icon
@@ -238,17 +248,17 @@ function contactMe(url) {
       <div class="flex gap-2 mb-2">
         <Icon
           name="uil:whatsapp"
-          class="w-7 h-7 cursor-pointer hover:text-gray-800"
+          class="w-7 h-7 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
           @click="contactMe(`https://wa.me/5356653917`)"
         />
         <Icon
           name="uil:telegram"
-          class="w-7 h-7 cursor-pointer hover:text-gray-800"
+          class="w-7 h-7 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
           @click="contactMe(`https://t.me/cmorellr`)"
         />
         <Icon
           name="uil:github"
-          class="w-7 h-7 cursor-pointer hover:text-gray-800"
+          class="w-7 h-7 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
           @click="contactMe(`https://github.com/pfrito`)"
         />
       </div>
