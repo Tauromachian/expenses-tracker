@@ -7,6 +7,7 @@ export default {
     "./plugins/**/*.{js,ts}",
     "./app.vue",
     "./error.vue",
+    "./node_modules/flowbite/**/*.{js,ts}",
   ],
   theme: {
     extend: {
@@ -18,5 +19,5 @@ export default {
       mobile: "449px",
     },
   },
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [require("tailwind-scrollbar"), require("flowbite/plugin")],
 };

@@ -12,6 +12,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@vee-validate/nuxt": "^4.12.6",
+    "flowbite": "^2.3.0",
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
