@@ -4,8 +4,8 @@ import { useExpenseStore } from "./stores/expenses";
 const expenseStore = useExpenseStore();
 
 const { data: categories } = await useFetch("/api/constants/categories");
-let notifications = ref([]);
 let formKey = ref(0);
+let showToast = ref(false);
 
 function contactMe(url) {
   window.open(url);
@@ -14,25 +14,10 @@ function contactMe(url) {
 function submitForm(form) {
   formKey.value++;
   expenseStore.addExpense(form);
-  createNotification();
-}
-
-function createNotification() {
-  const id = Date.now();
-  const message = "New expense added!";
-  notifications.value.push({ id, message });
-
+  showToast.value = true;
   setTimeout(() => {
-    removeNotification(id);
-  }, 3000);
-
-  console.log(notifications);
-}
-
-function removeNotification(id) {
-  notifications.value = notifications.value.filter(
-    (notification) => notification.id != id
-  );
+    showToast.value = false;
+  }, 1000);
 }
 
 // expenseStore.clearExpenses();
@@ -82,14 +67,11 @@ console.log(expenseStore.getExpenses.value);
         ></AddExpenseForm>
       </div>
 
-      <div>
-        <ToastNotification
-          v-for="notification in notifications"
-          :key="notification.id"
-          :message="notification.message"
-          @close="removeNotification(notification.id)"
-        ></ToastNotification>
-      </div>
+      <ToastNotification
+        v-if="showToast"
+        message="New expense added!"
+        @close="showToast = false"
+      ></ToastNotification>
     </main>
     <Footer @contactMe="contactMe"></Footer>
   </div>

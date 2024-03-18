@@ -11,7 +11,7 @@ function handleClose() {
 
 <template>
   <div
-    class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-lg absolute right-2 top-2"
+    class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-lg absolute right-4 top-2"
   >
     <div
       class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg"

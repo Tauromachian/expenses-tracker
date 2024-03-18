@@ -44,14 +44,14 @@ function handleBlurCategory() {
   setTimeout(() => {
     inputCategory.value = savedCategory.value;
     visibleCategories.value = false;
-  }, 300);
+  }, 220);
 }
 
 function handleBlurType() {
   setTimeout(() => {
     inputType.value = savedType.value;
     visibleTypes.value = false;
-  }, 300);
+  }, 220);
 }
 </script>
 
@@ -144,7 +144,7 @@ function handleBlurType() {
           <div
             v-else
             v-for="type in filteredTypes"
-            class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
+            class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition ease-in-out duration-150"
             @click="savedType = type"
           >
             <span>{{ type }}</span>
@@ -177,7 +177,7 @@ function handleBlurType() {
           <div
             v-else
             v-for="category in filteredCategories"
-            class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
+            class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition ease-in-out duration-150"
             @click="savedCategory = category.name"
           >
             <Icon
