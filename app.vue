@@ -1,9 +1,35 @@
 <script setup>
 import { useExpenseStore } from "./stores/expenses";
 
-const { data: categories } = await useFetch("/api/constants/categories");
-
 const expenseStore = useExpenseStore();
+
+const { data: categories } = await useFetch("/api/constants/categories");
+let notifications = ref([]);
+let formKey = ref(0);
+
+function submitForm(form) {
+  formKey.value++;
+  expenseStore.addExpense(form);
+  createNotification();
+}
+
+function createNotification() {
+  const id = Date.now();
+  const message = "New expense added!";
+  notifications.value.push({ id, message });
+
+  setTimeout(() => {
+    removeNotification(id);
+  }, 3000);
+
+  console.log(notifications);
+}
+
+function removeNotification(id) {
+  notifications.value = notifications.value.filter(
+    (notification) => notification.id != id
+  );
+}
 
 // expenseStore.clearExpenses();
 console.log(expenseStore.getExpenses.value);
@@ -41,8 +67,18 @@ console.log(expenseStore.getExpenses.value);
         </div>
         <AddExpenseForm
           :categories="categories"
-          @submitForm="expenseStore.addExpense(values)"
+          @submitForm="submitForm"
+          :key="formKey"
         ></AddExpenseForm>
+      </div>
+
+      <div>
+        <ToastNotification
+          v-for="notification in notifications"
+          :key="notification.id"
+          :message="notification.message"
+          @close="removeNotification(notification.id)"
+        ></ToastNotification>
       </div>
     </main>
     <Footer @contactMe="window.open(url)"></Footer>
