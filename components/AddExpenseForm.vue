@@ -56,9 +56,9 @@ function handleBlurType() {
 </script>
 
 <template>
-  <Form @submit="onSubmit" class="mx-7 my-4 text-sm pt-3" v-slot="{ errors }">
+  <Form @submit="onSubmit" class="mx-7 my-4 pt-3" v-slot="{ errors }">
     <div>
-      <label for="name" type="text">Name</label>
+      <label>Name</label>
       <div class="block mt-1 mb-5 text-gray-800">
         <Field
           type="text"
@@ -72,7 +72,7 @@ function handleBlurType() {
         >
       </div>
 
-      <label for="description" type="text">Description</label>
+      <label>Description</label>
       <div class="block mt-1 mb-5 text-gray-800">
         <Field
           type="text"
@@ -87,7 +87,7 @@ function handleBlurType() {
         >
       </div>
 
-      <label for="expense" type="text">Amount</label>
+      <label>Amount</label>
       <div class="block mt-1 mb-5 text-gray-800 relative">
         <Field
           type="text"
@@ -119,7 +119,7 @@ function handleBlurType() {
         >
       </div>
 
-      <label for="types">Type</label>
+      <label>Type</label>
       <div class="block mt-1 mb-5 text-gray-800 relative">
         <Field
           type="text"
@@ -152,7 +152,7 @@ function handleBlurType() {
         </div>
       </div>
 
-      <label for="categories">Category</label>
+      <label>Category</label>
       <div class="block mt-1 mb-3 text-gray-800 relative">
         <Field
           type="text"

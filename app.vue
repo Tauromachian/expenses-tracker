@@ -36,8 +36,10 @@ console.log(expenseStore.getExpenses.value);
 </script>
 
 <template>
-  <div id="app" class="bg-gray-100 text-gray-600 font-nunito">
-    <main class="flex justify-center mobile:items-center h-screen">
+  <div id="app" class="bg-gray-100 text-gray-600 font-nunito h-screen mobile:h-auto flex flex-col justify-between">
+    <main
+      class="flex justify-center mobile:items-center h-auto mobile:h-screen"
+    >
       <div
         class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md"
       >
@@ -59,7 +61,9 @@ console.log(expenseStore.getExpenses.value);
             </svg>
           </div>
           <div class="my-auto">
-            <span class="font-bold block text-white">Add new expense</span>
+            <span class="font-bold block text-white text-lg"
+              >Add new expense</span
+            >
             <span class="text-xs">
               Fill in the form with the details of the expense
             </span>
