@@ -44,14 +44,14 @@ function handleBlurCategory() {
   setTimeout(() => {
     inputCategory.value = savedCategory.value;
     visibleCategories.value = false;
-  }, 110);
+  }, 300);
 }
 
 function handleBlurType() {
   setTimeout(() => {
     inputType.value = savedType.value;
     visibleTypes.value = false;
-  }, 110);
+  }, 300);
 }
 </script>
 
@@ -135,8 +135,8 @@ function handleBlurType() {
           >{{ errors.types }}</span
         >
         <div
+          v-if="visibleTypes"
           class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10"
-          :class="{ hidden: !visibleTypes }"
         >
           <div v-if="!filteredTypes.length" class="text-center">
             No types match your search
@@ -168,8 +168,8 @@ function handleBlurType() {
           >{{ errors.categories }}</span
         >
         <div
+          v-if="visibleCategories"
           class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute max-h-32 overflow-y-scroll scrollbar-none"
-          :class="{ hidden: !visibleCategories }"
         >
           <div v-if="!filteredCategories.length" class="text-center">
             No categories match your search

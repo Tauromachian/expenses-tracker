@@ -14,17 +14,17 @@ function contactMe(url) {
     <div class="flex gap-2 mb-2">
       <Icon
         name="uil:whatsapp"
-        class="w-9 h-9 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
+        class="w-9 h-9 mobile:w-8 mobile:h-8 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
         @click="contactMe(`https://wa.me/5356653917`)"
       />
       <Icon
         name="uil:telegram"
-        class="w-9 h-9 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
+        class="w-9 h-9 mobile:w-8 mobile:h-8 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
         @click="contactMe(`https://t.me/cmorellr`)"
       />
       <Icon
         name="uil:github"
-        class="w-9 h-9 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
+        class="w-9 h-9 mobile:w-8 mobile:h-8 cursor-pointer hover:text-gray-800 transform hover:scale-125 transition ease-in-out duration-200"
         @click="contactMe(`https://github.com/pfrito`)"
       />
     </div>

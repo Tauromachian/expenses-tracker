@@ -7,6 +7,10 @@ const { data: categories } = await useFetch("/api/constants/categories");
 let notifications = ref([]);
 let formKey = ref(0);
 
+function contactMe(url) {
+  window.open(url);
+}
+
 function submitForm(form) {
   formKey.value++;
   expenseStore.addExpense(form);
@@ -36,7 +40,10 @@ console.log(expenseStore.getExpenses.value);
 </script>
 
 <template>
-  <div id="app" class="bg-gray-100 text-gray-600 font-nunito h-screen mobile:h-auto flex flex-col justify-between">
+  <div
+    id="app"
+    class="bg-gray-100 text-gray-600 font-nunito h-screen mobile:h-auto flex flex-col justify-between"
+  >
     <main
       class="flex justify-center mobile:items-center h-auto mobile:h-screen"
     >
@@ -72,7 +79,6 @@ console.log(expenseStore.getExpenses.value);
         <AddExpenseForm
           :categories="categories"
           @submitForm="submitForm"
-          :key="formKey"
         ></AddExpenseForm>
       </div>
 
@@ -85,6 +91,6 @@ console.log(expenseStore.getExpenses.value);
         ></ToastNotification>
       </div>
     </main>
-    <Footer @contactMe="window.open(url)"></Footer>
+    <Footer @contactMe="contactMe"></Footer>
   </div>
 </template>
