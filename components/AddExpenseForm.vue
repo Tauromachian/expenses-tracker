@@ -14,6 +14,7 @@ let visibleCategories = ref(false);
 let visibleTypes = ref(false);
 let fadingInOutTypes = ref(false);
 let fadingInOutCategories = ref(false);
+let inHover = ref(false);
 
 let filteredCategories = computed(() => {
   return categories.filter((item) => {
@@ -216,7 +217,18 @@ function handleFocusCategory() {
         </div>
       </div>
 
-      <div class="flex justify-end pt-5 pb-2">
+      <div class="flex justify-between pt-5 pb-2">
+        <button
+          class="px-3 py-2 bg-teal-700 text-white rounded-full transition-transform duration-100 ease-in-out hover:scale-110"
+          @mouseover="inHover = true"
+          @mouseout="inHover = false"
+        >
+          <Icon name="material-symbols:bar-chart" class="w-6 h-6" />
+          <span :class="{ 'hidden': !inHover, 'mx-1': inHover}"
+            >View expenses</span
+          >
+        </button>
+
         <button
           class="px-3 py-2 bg-teal-50 text-teal-700 rounded-full hover:bg-teal-700 hover:text-white transition ease-in-out duration-100"
         >
