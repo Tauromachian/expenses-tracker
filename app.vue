@@ -12,7 +12,7 @@ function contactMe(url) {
   window.open(url);
 }
 
-async function submitForm(form) {
+function submitForm(form) {
   formKey.value++;
   expenseStore.addExpense(form);
 
@@ -22,13 +22,17 @@ async function submitForm(form) {
     fadingInOut.value = true;
   }, 10);
   setTimeout(() => {
-    setTimeout(() => {
-      fadingInOut.value = false;
-    }, 10);
-    setTimeout(() => {
-      showToast.value = false;
-    }, 160);
-  }, 2000);
+    closeToast()
+  }, 1500);
+}
+
+function closeToast() {
+  setTimeout(() => {
+    fadingInOut.value = false;
+  }, 10);
+  setTimeout(() => {
+    showToast.value = false;
+  }, 160);
 }
 
 // expenseStore.clearExpenses();
@@ -83,7 +87,7 @@ console.log(expenseStore.getExpenses.value);
         class="transition-opacity duration-150 ease-in-out"
         :class="{ 'opacity-100': fadingInOut, 'opacity-0': !fadingInOut }"
         message="New expense added!"
-        @close="showToast = false"
+        @close="closeToast"
       ></ToastNotification>
     </main>
     <Footer @contactMe="contactMe"></Footer>
