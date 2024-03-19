@@ -1,4 +1,11 @@
 <script setup>
+import { onMounted } from "vue";
+import { initFlowbite } from "flowbite";
+
+onMounted(() => {
+  initFlowbite();
+});
+
 const props = defineProps({
   categories: Object,
 });
@@ -48,7 +55,7 @@ function handleBlurCategory() {
     fadingInOutCategories.value = false;
     inputCategory.value = savedCategory.value;
     visibleCategories.value = false;
-  }, 220);
+  }, 300);
 }
 
 function handleBlurType() {
@@ -56,7 +63,7 @@ function handleBlurType() {
     fadingInOutTypes.value = false;
     inputType.value = savedType.value;
     visibleTypes.value = false;
-  }, 220);
+  }, 300);
 }
 
 function handleFocusType() {
@@ -192,7 +199,7 @@ function handleFocusCategory() {
         >
         <div
           v-if="visibleCategories"
-          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out"
+          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out h-32 overflow-scroll scrollbar-none"
           :class="{
             'opacity-100': fadingInOutCategories,
             'opacity-0': !fadingInOutCategories,
@@ -219,12 +226,15 @@ function handleFocusCategory() {
 
       <div class="flex justify-between pt-5 pb-2">
         <button
+          type="button"
+          data-modal-target="stats-modal"
+          data-modal-toggle="stats-modal"
           class="px-3 py-2 bg-teal-700 text-white rounded-full transition-transform duration-100 ease-in-out hover:scale-110"
           @mouseover="inHover = true"
           @mouseout="inHover = false"
         >
           <Icon name="material-symbols:bar-chart" class="w-6 h-6" />
-          <span :class="{ 'hidden': !inHover, 'mx-1': inHover}"
+          <span :class="{ hidden: !inHover, 'mx-1': inHover }"
             >View expenses</span
           >
         </button>
@@ -238,6 +248,28 @@ function handleFocusCategory() {
             class="ml-1 w-5 h-5"
           />
         </button>
+      </div>
+
+      <div
+        id="stats-modal"
+        tabindex="-1"
+        aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      >
+        <div class="relative w-full max-w-md max-h-full">
+          <ExpenseStatsCard>
+            <template v-slot:close-button>
+              <button
+                id="closeButton"
+                data-modal-hide="stats-modal"
+                type="button"
+                class="rounded-full text-white bg-teal-700 px-3 py-2 transition-transform hover:scale-110"
+              >
+                <Icon name="material-symbols:add" class="w-6 h-6" />
+              </button>
+            </template>
+          </ExpenseStatsCard>
+        </div>
       </div>
     </div>
   </Form>

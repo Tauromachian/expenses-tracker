@@ -1,4 +1,13 @@
 <script setup>
+// TODO
+// expense list has:
+// - grafico de pastel con costo total en el medio
+// - h1 all/monthly/anual expenses
+// - next to it an icon(edit pencil) que saca un dropdown para elegir all/monthly/anual
+// - at the end of the line a bg-teal-700 text-white plus button
+// - listado de gastos
+// - cards van a ser icono color fondo gris (tooltip con nombre de categoria) redondo al lado nombre en negro y | tipo en grisesito, debajo en gris descripcion, cantidad en negro al final de la card
+
 import { useExpenseStore } from "./stores/expenses";
 
 const expenseStore = useExpenseStore();
@@ -75,6 +84,7 @@ console.log(expenseStore.getExpenses.value);
           </div>
         </div>
         <AddExpenseForm
+          :key="formKey"
           :categories="categories"
           @submitForm="submitForm"
         ></AddExpenseForm>
