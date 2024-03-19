@@ -6,18 +6,29 @@ const expenseStore = useExpenseStore();
 const { data: categories } = await useFetch("/api/constants/categories");
 let formKey = ref(0);
 let showToast = ref(false);
+let fadingInOut = ref(false);
 
 function contactMe(url) {
   window.open(url);
 }
 
-function submitForm(form) {
+async function submitForm(form) {
   formKey.value++;
   expenseStore.addExpense(form);
+
+  // show notification
   showToast.value = true;
   setTimeout(() => {
-    showToast.value = false;
-  }, 1000);
+    fadingInOut.value = true;
+  }, 10);
+  setTimeout(() => {
+    setTimeout(() => {
+      fadingInOut.value = false;
+    }, 10);
+    setTimeout(() => {
+      showToast.value = false;
+    }, 160);
+  }, 2000);
 }
 
 // expenseStore.clearExpenses();
@@ -69,6 +80,8 @@ console.log(expenseStore.getExpenses.value);
 
       <ToastNotification
         v-if="showToast"
+        class="transition-opacity duration-150 ease-in-out"
+        :class="{ 'opacity-100': fadingInOut, 'opacity-0': !fadingInOut }"
         message="New expense added!"
         @close="showToast = false"
       ></ToastNotification>
