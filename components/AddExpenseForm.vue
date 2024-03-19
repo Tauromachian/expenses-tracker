@@ -12,6 +12,8 @@ let inputType = ref("");
 let savedType = ref("");
 let visibleCategories = ref(false);
 let visibleTypes = ref(false);
+let fadingInOutTypes = ref(false);
+let fadingInOutCategories = ref(false);
 
 let filteredCategories = computed(() => {
   return categories.filter((item) => {
@@ -42,6 +44,7 @@ function validateNumberField(value) {
 
 function handleBlurCategory() {
   setTimeout(() => {
+    fadingInOutCategories.value = false;
     inputCategory.value = savedCategory.value;
     visibleCategories.value = false;
   }, 220);
@@ -49,9 +52,24 @@ function handleBlurCategory() {
 
 function handleBlurType() {
   setTimeout(() => {
+    fadingInOutTypes.value = false;
     inputType.value = savedType.value;
     visibleTypes.value = false;
   }, 220);
+}
+
+function handleFocusType() {
+  visibleTypes.value = true;
+  setTimeout(() => {
+    fadingInOutTypes.value = true;
+  }, 10);
+}
+
+function handleFocusCategory() {
+  visibleCategories.value = true;
+  setTimeout(() => {
+    fadingInOutCategories.value = true;
+  }, 10);
 }
 </script>
 
@@ -127,7 +145,7 @@ function handleBlurType() {
           v-model="inputType"
           class="relative text-field peer"
           :rules="validateTextField"
-          @focus="visibleTypes = true"
+          @focus="handleFocusType"
           @blur="handleBlurType"
         />
         <span
@@ -136,7 +154,11 @@ function handleBlurType() {
         >
         <div
           v-if="visibleTypes"
-          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10"
+          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out"
+          :class="{
+            'opacity-100': fadingInOutTypes,
+            'opacity-0': !fadingInOutTypes,
+          }"
         >
           <div v-if="!filteredTypes.length" class="text-center">
             No types match your search
@@ -160,7 +182,7 @@ function handleBlurType() {
           v-model="inputCategory"
           class="relative text-field peer"
           :rules="validateTextField"
-          @focus="visibleCategories = true"
+          @focus="handleFocusCategory"
           @blur="handleBlurCategory"
         />
         <span
@@ -169,7 +191,11 @@ function handleBlurType() {
         >
         <div
           v-if="visibleCategories"
-          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute max-h-32 overflow-y-scroll scrollbar-none"
+          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out"
+          :class="{
+            'opacity-100': fadingInOutCategories,
+            'opacity-0': !fadingInOutCategories,
+          }"
         >
           <div v-if="!filteredCategories.length" class="text-center">
             No categories match your search

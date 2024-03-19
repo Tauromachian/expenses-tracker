@@ -22,14 +22,12 @@ function submitForm(form) {
     fadingInOut.value = true;
   }, 10);
   setTimeout(() => {
-    closeToast()
+    closeToast();
   }, 1500);
 }
 
 function closeToast() {
-  setTimeout(() => {
-    fadingInOut.value = false;
-  }, 10);
+  fadingInOut.value = false;
   setTimeout(() => {
     showToast.value = false;
   }, 160);
