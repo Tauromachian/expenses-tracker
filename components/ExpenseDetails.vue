@@ -19,7 +19,7 @@ let showTrash = ref(false);
 </script>
 
 <template>
-  <div class="flex items-center mb-4">
+  <div class="flex items-center py-2">
     <button
       :data-tooltip-target="`tooltip-${details.id}`"
       data-tooltip-trigger="hover"

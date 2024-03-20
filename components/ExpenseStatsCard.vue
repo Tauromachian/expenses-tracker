@@ -43,8 +43,8 @@ function removeExpense(id) {
 </script>
 
 <template>
-  <div class="bg-white mobile:rounded-md px-7 pt-4 pb-5">
-    <div class="flex justify-between mb-4">
+  <div class="bg-white mobile:rounded-md px-7 pt-4 pb-3">
+    <div class="flex justify-between mb-2">
       <div class="text-gray-800 font-bold flex items-center">
         <span class="text-lg">{{ type }} expenses</span>
         <div class="text-gray-400 border-l-2 ml-3">
@@ -86,6 +86,7 @@ function removeExpense(id) {
         :details="expense"
         :category="getCategory(expense.categories)"
         @removeExpense="removeExpense(expense.id)"
+        class="border-b last:border-0"
       ></ExpenseDetails>
     </div>
   </div>
