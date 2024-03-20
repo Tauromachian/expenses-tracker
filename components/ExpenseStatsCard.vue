@@ -35,6 +35,11 @@ function getCategory(category) {
     })
   ];
 }
+
+function removeExpense(id) {
+  expenseStore.removeExpense(id)
+  loadData()
+}
 </script>
 
 <template>
@@ -73,11 +78,14 @@ function getCategory(category) {
     </div>
 
     <div class="max-h-96 overflow-scroll scrollbar-none">
+      <div v-if="!expenses.length" class="text-center">No expenses to show yet!</div>
       <ExpenseDetails
-        v-for="(expense, index) in expenses"
-        :key="index"
+        v-else
+        v-for="expense in expenses"
+        :key="expense.id"
         :details="expense"
         :category="getCategory(expense.categories)"
+        @removeExpense="removeExpense(expense.id)"
       ></ExpenseDetails>
     </div>
   </div>

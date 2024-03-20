@@ -1,6 +1,6 @@
 export const useExpenseStore = defineStore("expenses", () => {
   // state
-  const expenses = ref([]);
+  let expenses = ref([]);
 
   // getters
   const getExpenses = computed(() => {
@@ -10,7 +10,13 @@ export const useExpenseStore = defineStore("expenses", () => {
 
   // actions
   function addExpense(expense) {
+    expense.id = calcMEX();
     expenses.value.push(expense);
+    saveExpenses();
+  }
+
+  function removeExpense(id) {
+    expenses.value = expenses.value.filter((expense) => expense.id != id);
     saveExpenses();
   }
 
@@ -27,11 +33,21 @@ export const useExpenseStore = defineStore("expenses", () => {
   }
 
   function loadExpenses() {
-    if (typeof localStorage !== "undefined") {
-      const savedExpenses = localStorage.getItem("expenses");
-      expenses.value = savedExpenses ? JSON.parse(savedExpenses) : [];
-    }
+    const savedExpenses = localStorage.getItem("expenses");
+    expenses.value = JSON.parse(savedExpenses);
   }
 
-  return { expenses, getExpenses, addExpense, clearExpenses };
+  // helper function
+  function calcMEX() {
+    let mex = 1;
+    const idSet = new Set();
+    expenses.value.forEach((expense) => {
+      idSet.add(expense.id);
+      while (idSet.has(mex)) mex++;
+    });
+
+    return mex;
+  }
+
+  return { expenses, getExpenses, addExpense, removeExpense, clearExpenses };
 });

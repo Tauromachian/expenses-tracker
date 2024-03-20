@@ -1,7 +1,7 @@
 <script setup>
 // TODO
-// expense list has:
 // - grafico de pastel con costo total en el medio
+// - tooltip sobre icono de gasto mostrando nombre del gasto
 
 import { useExpenseStore } from "./stores/expenses";
 
