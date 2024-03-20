@@ -199,7 +199,7 @@ function handleFocusCategory() {
         >
         <div
           v-if="visibleCategories"
-          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out h-32 overflow-scroll scrollbar-none"
+          class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out max-h-32 overflow-scroll scrollbar-none"
           :class="{
             'opacity-100': fadingInOutCategories,
             'opacity-0': !fadingInOutCategories,
@@ -257,7 +257,7 @@ function handleFocusCategory() {
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
       >
         <div class="relative w-full max-w-md max-h-full">
-          <ExpenseStatsCard>
+          <ExpenseStatsCard :categories="props.categories">
             <template v-slot:close-button>
               <button
                 id="closeButton"

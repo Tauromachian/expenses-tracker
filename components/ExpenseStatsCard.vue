@@ -1,6 +1,9 @@
 <script setup>
 import { useExpenseStore } from "../stores/expenses";
 
+const props = defineProps({
+  categories: Array,
+});
 const expenseStore = useExpenseStore();
 
 let type = ref("All");
@@ -24,21 +27,32 @@ function changeType(data) {
   type.value = data;
   loadData();
 }
+
+function getCategory(category) {
+  return props.categories[
+    props.categories.findIndex((item) => {
+      return item.name == category;
+    })
+  ];
+}
 </script>
 
 <template>
-  <div class="bg-white mobile:rounded-md px-7 pt-4 pb-6">
-    <div class="flex justify-between mb-5">
+  <div class="bg-white mobile:rounded-md px-7 pt-4 pb-5">
+    <div class="flex justify-between mb-4">
       <div class="text-gray-800 font-bold flex items-center">
-        <span>{{ type }} Expenses</span>
-        <div class="text-gray-400 border-l-2 ml-2">
-          <Icon
+        <span class="text-lg">{{ type }} expenses</span>
+        <div class="text-gray-400 border-l-2 ml-3">
+          <button
             type="button"
             id="dropdownButton"
             data-dropdown-toggle="dropdown"
-            name="fluent:edit-28-filled"
-            class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
-          ></Icon>
+          >
+            <Icon
+              name="fluent:edit-28-filled"
+              class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
+            ></Icon>
+          </button>
         </div>
         <div id="dropdown" class="z-10 hidden">
           <div
@@ -46,7 +60,7 @@ function changeType(data) {
             class="font-normal bg-white w-32 mt-1 p-2 rounded-lg border border-gray-300"
           >
             <div
-              v-for="choice in ['All', 'Monthly', 'Anual']"
+              v-for="choice in ['All', 'One time', 'Monthly', 'Anual']"
               class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
               @click="changeType(choice)"
             >
@@ -63,6 +77,7 @@ function changeType(data) {
         v-for="(expense, index) in expenses"
         :key="index"
         :details="expense"
+        :category="getCategory(expense.categories)"
       ></ExpenseDetails>
     </div>
   </div>

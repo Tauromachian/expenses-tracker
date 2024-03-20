@@ -2,37 +2,44 @@ export default defineEventHandler(async (event) => {
   const data = [
     {
       icon: "material-symbols-light:light-group-rounded",
-      color: "#0080ff",
+      color: "#3385ff",
+      bgColor: "#e6f0ff",
       name: "Utilities",
     },
     {
       icon: "material-symbols-light:home",
-      color: "#ff8000",
+      color: "#990073",
+      bgColor: "#ffe6f9",
       name: "House",
     },
     {
       icon: "material-symbols-light:shopping-cart",
-      color: "#ff33cc",
+      color: "#ff33ff",
+      bgColor: "#ffe6ff",
       name: "Shop",
     },
     {
       icon: "material-symbols-light:sports-basketball",
       color: "#00cca3",
+      bgColor: "#e6fffa",
       name: "Entertainment",
     },
     {
       icon: "material-symbols-light:fastfood",
-      color: "#e6e600",
+      color: "#ffcc00",
+      bgColor: "#fffae6",
       name: "Food",
     },
     {
       icon: "material-symbols-light:directions-bus",
-      color: "#00e600",
+      color: "#00b300",
+      bgColor: "#e6ffe6",
       name: "Transportation",
     },
     {
       icon: "material-symbols-light:travel-luggage-and-bags",
-      color: "indigo",
+      color: "#663300",
+      bgColor: "#ffe6cc",
       name: "Travel",
     },
   ];
