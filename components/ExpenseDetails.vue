@@ -53,12 +53,13 @@ let showTrash = ref(false);
       </div>
       <div class="flex justify-between">
         <p class="text-sm">{{ details.description }}</p>
-        <Icon
-          name="material-symbols-light:delete-outline"
-          class="opacity-0 w-5 h-5 text-red-700 cursor-pointer hover:text-red-800 transition-all duration-100 ease-in-out"
-          :class="{ 'opacity-100': showTrash }"
-          @click="handleRemove"
-        />
+        <button @click="handleRemove">
+          <Icon
+            name="material-symbols-light:delete-outline"
+            class="opacity-0 w-5 h-5 text-red-700 hover:text-red-800 transition-all duration-100 ease-in-out"
+            :class="{ 'opacity-100': showTrash }"
+          />
+        </button>
       </div>
     </div>
   </div>
