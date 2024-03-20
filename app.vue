@@ -1,7 +1,6 @@
 <script setup>
 // TODO
 // - grafico de pastel con costo total en el medio
-// - tooltip sobre icono de gasto mostrando nombre del gasto
 
 import { useExpenseStore } from "./stores/expenses";
 
@@ -37,7 +36,6 @@ function closeToast() {
   }, 160);
 }
 
-// expenseStore.clearExpenses();
 </script>
 
 <template>

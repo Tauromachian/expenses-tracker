@@ -1,9 +1,8 @@
 <script setup>
-import { onMounted } from "vue";
-import { initFlowbite } from "flowbite";
+import { initModals } from "flowbite";
 
 onMounted(() => {
-  initFlowbite();
+  initModals();
 });
 
 const props = defineProps({
