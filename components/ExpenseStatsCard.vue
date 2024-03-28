@@ -37,13 +37,15 @@ function getCategory(category) {
 }
 
 function removeExpense(id) {
-  expenseStore.removeExpense(id)
-  loadData()
+  expenseStore.removeExpense(id);
+  loadData();
 }
 </script>
 
 <template>
   <div class="bg-white mobile:rounded-md px-7 pt-4 pb-3">
+    <DonutChart></DonutChart>
+
     <div class="flex justify-between mb-2">
       <div class="text-gray-800 font-bold flex items-center">
         <span class="text-lg">{{ type }} expenses</span>
@@ -78,7 +80,9 @@ function removeExpense(id) {
     </div>
 
     <div class="max-h-96 overflow-scroll scrollbar-none">
-      <div v-if="!expenses.length" class="text-center">No expenses to show yet!</div>
+      <div v-if="!expenses.length" class="text-center">
+        No expenses to show yet!
+      </div>
       <ExpenseDetails
         v-else
         v-for="expense in expenses"

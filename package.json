@@ -12,11 +12,13 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@vee-validate/nuxt": "^4.12.6",
+    "apexcharts": "^3.48.0",
     "flowbite": "^2.3.0",
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue3-apexcharts": "^1.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.18",
