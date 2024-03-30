@@ -1,7 +1,4 @@
 <script setup>
-// TODO
-// - grafico de pastel con costo total en el medio
-
 import { useExpenseStore } from "./stores/expenses";
 
 const expenseStore = useExpenseStore();

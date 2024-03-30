@@ -1,4 +1,5 @@
 <script setup>
+import { initFlowbite } from 'flowbite'
 import { useExpenseStore } from "../stores/expenses";
 
 const props = defineProps({
@@ -8,8 +9,10 @@ const expenseStore = useExpenseStore();
 
 let type = ref("All");
 let expenses = ref([]);
+let chartKey = ref(0);
 
 onMounted(() => {
+  initFlowbite()
   loadData();
 });
 
@@ -21,6 +24,7 @@ function loadData() {
       return expense.types == type.value;
     }),
   ];
+  chartKey.value++;
 }
 
 function changeType(data) {
@@ -44,7 +48,12 @@ function removeExpense(id) {
 
 <template>
   <div class="bg-white mobile:rounded-md px-7 pt-4 pb-3">
-    <DonutChart></DonutChart>
+    <DonutChart
+      :key="chartKey"
+      v-if="expenses.length"
+      :expenses="expenses"
+      :categories="props.categories"
+    ></DonutChart>
 
     <div class="flex justify-between mb-2">
       <div class="text-gray-800 font-bold flex items-center">
@@ -79,7 +88,7 @@ function removeExpense(id) {
       <slot name="close-button"></slot>
     </div>
 
-    <div class="max-h-96 overflow-scroll scrollbar-none">
+    <div class="max-h-64 overflow-scroll scrollbar-none">
       <div v-if="!expenses.length" class="text-center">
         No expenses to show yet!
       </div>
