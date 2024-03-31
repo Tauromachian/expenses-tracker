@@ -1,4 +1,5 @@
 export default defineEventHandler(async (event) => {
+  //annadirle las mascotas con la bola de pokemon, health / self care con un corazo plus, ropa, inversiones y otros
   const data = [
     {
       icon: "material-symbols-light:light-group-rounded",
