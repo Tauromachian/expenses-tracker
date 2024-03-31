@@ -1,4 +1,4 @@
-export default defineEventHandler(async (event) => {
+export default function () {
   const data = [
     {
       icon: "material-symbols-light:light-group-rounded",
@@ -81,4 +81,4 @@ export default defineEventHandler(async (event) => {
   ];
 
   return data;
-});
+}

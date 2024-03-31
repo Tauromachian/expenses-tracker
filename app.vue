@@ -1,9 +1,11 @@
 <script setup>
+import { ref } from "vue";
 import { useExpenseStore } from "./stores/expenses";
 
 const expenseStore = useExpenseStore();
 
-const { data: categories } = await useFetch("/api/constants/categories");
+// const { data: categories } = await useFetch("/api/constants/categories");
+const categories = ref(getCategories());
 let formKey = ref(0);
 let showToast = ref(false);
 let fadingInOut = ref(false);
@@ -32,7 +34,6 @@ function closeToast() {
     showToast.value = false;
   }, 160);
 }
-
 </script>
 
 <template>
