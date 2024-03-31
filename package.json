@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.18",
+    "gh-pages": "^6.1.1",
     "nuxt-icon": "^0.6.9",
     "postcss": "^8.4.35",
     "tailwind-scrollbar": "^3.1.0",
