@@ -1,75 +1,22 @@
-# Nuxt 3 Minimal Starter
+# Expense Manager
+## Description
+A web application made with Nuxt 3 for expense management. It stores data persistently using Pinia and the browser's localStorage. Styling is with Flowbite and Tailwindcss.
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Design
+![add-expense-forn](public/add-expense-form.jpg)
+![expenses-stats](public/expenses-stats.jpg)
 
-## Setup
-
-Make sure to install the dependencies:
-
+## Build Setup
 ```bash
-# npm
-npm install
+# install dependencies
+$ npm install
 
-# pnpm
-pnpm install
+# compile tailwind config changes
+$ npm run build
 
-# yarn
-yarn install
-
-# bun
-bun install
+# serve with hot reload at localhost:3000
+$ npm run dev
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Contribution
+To contribute to this project please check out the [contribution guidelines](https://github.com/YurisCodingClub/accessibility-mentor/blob/main/CONTRIBUTING.md).
