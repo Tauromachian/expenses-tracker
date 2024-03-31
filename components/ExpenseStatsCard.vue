@@ -35,8 +35,10 @@ function handleEditType() {
 }
 
 function changeType(data) {
-  if (data != type.value) loadData();
-  type.value = data;
+  if (data != type.value) {
+    type.value = data;
+    loadData();
+  }
   fadingInOutTypes.value = false;
   visibleTypes.value = false;
 }
@@ -56,7 +58,10 @@ function removeExpense(id) {
 </script>
 
 <template>
-  <div class="bg-white mobile:rounded-md px-7 pt-4 pb-3" @click="visibleTypes = false">
+  <div
+    class="bg-white mobile:rounded-md px-7 pt-4 pb-3"
+    @click="visibleTypes = false"
+  >
     <DonutChart
       :key="chartKey"
       v-if="expenses.length"

@@ -34,7 +34,7 @@ export const useExpenseStore = defineStore("expenses", () => {
 
   function loadExpenses() {
     const savedExpenses = localStorage.getItem("expenses");
-    expenses.value = JSON.parse(savedExpenses);
+    expenses.value = savedExpenses ? JSON.parse(savedExpenses) : [];
   }
 
   // helper function
