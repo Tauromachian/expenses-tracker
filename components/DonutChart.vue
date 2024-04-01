@@ -56,15 +56,15 @@ onMounted(() => {
 
   expensesPerCategory.sort((a, b) => b.total - a.total);
 
-  if (expensesPerCategory.length > 6) {
+  if (expensesPerCategory.length > 5) {
     let excedentArray = [...expensesPerCategory];
-    excedentArray.splice(0, 6);
+    excedentArray.splice(0, 5);
 
     const excedentTotal = excedentArray.reduce((total, item) => {
       return total + item.total;
     }, 0);
 
-    expensesPerCategory.splice(6, expensesPerCategory.length - 6);
+    expensesPerCategory.splice(5, expensesPerCategory.length - 5);
     expensesPerCategory.push({
       total: excedentTotal,
       color: "#a6a6a6",
@@ -90,7 +90,7 @@ onMounted(() => {
       type="donut"
       :options="options"
       :series="chartSeries"
-      class="mt-1"
+      class="my-2"
     ></apexchart>
   </ClientOnly>
 </template>
