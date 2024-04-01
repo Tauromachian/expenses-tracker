@@ -58,7 +58,7 @@ function removeExpense(id) {
 </script>
 
 <template>
-  <div class="w-full max-w-md flex mobile:items-center">
+  <div class="w-full max-w-md flex mobile:items-center" id="expense-stats">
     <div
       class="bg-white w-full h-min mobile:rounded-md mobile:shadow-md mobile:pt-4 px-7 pb-3"
       @click="visibleTypes = false"
