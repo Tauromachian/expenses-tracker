@@ -8,32 +8,57 @@ const categories = ref(getCategories());
 let formKey = ref(0);
 let statsKey = ref(0);
 let showToast = ref(false);
-let fadingInOut = ref(false);
+let fadingInOutToast = ref(false);
+let showScrollDown = ref(false);
+let fadingInOutArrow = ref(false);
 
 function contactMe(url) {
   window.open(url);
 }
 
 function submitForm(form) {
+  // show scroll-down arrow
+  showScrollDown.value = true;
+  setTimeout(() => {
+    fadingInOutArrow.value = true;
+  }, 10);
+  setTimeout(() => {
+    closeScrollDown();
+  }, 2000);
+
   formKey.value++;
   expenseStore.addExpense(form);
-  
+
   // show notification
   showToast.value = true;
   setTimeout(() => {
-    fadingInOut.value = true;
+    fadingInOutToast.value = true;
   }, 10);
   setTimeout(() => {
     closeToast();
   }, 1500);
-  
+
   statsKey.value++;
 }
 
+function scrollToStats() {
+  const componente = document.getElementById("expense-stats");
+  componente.scrollIntoView({ behavior: "smooth" });
+
+  closeScrollDown();
+}
+
 function closeToast() {
-  fadingInOut.value = false;
+  fadingInOutToast.value = false;
   setTimeout(() => {
     showToast.value = false;
+  }, 160);
+}
+
+function closeScrollDown() {
+  fadingInOutArrow.value = false;
+  setTimeout(() => {
+    showScrollDown.value = false;
   }, 160);
 }
 </script>
@@ -50,15 +75,29 @@ function closeToast() {
         @submitForm="submitForm"
       ></AddExpenseForm>
 
-      <ExpenseStatsCard :key="statsKey" :categories="categories"> </ExpenseStatsCard>
+      <ExpenseStatsCard :key="statsKey" :categories="categories">
+      </ExpenseStatsCard>
 
       <ToastNotification
         v-if="showToast"
         class="transition-opacity duration-150 ease-in-out"
-        :class="{ 'opacity-100': fadingInOut, 'opacity-0': !fadingInOut }"
+        :class="{
+          'opacity-100': fadingInOutToast,
+          'opacity-0': !fadingInOutToast,
+        }"
         message="New expense added!"
         @close="closeToast"
       ></ToastNotification>
+
+      <ScrollDownArrow
+        v-if="showScrollDown"
+        class="transition-opacity duration-150 ease-in-out"
+        :class="{
+          'opacity-100': fadingInOutArrow,
+          'opacity-0': !fadingInOutArrow,
+        }"
+        @scrollToStats="scrollToStats"
+      ></ScrollDownArrow>
     </main>
     <Footer @contactMe="contactMe"></Footer>
   </div>
