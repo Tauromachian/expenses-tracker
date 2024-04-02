@@ -5,9 +5,15 @@ onMounted(() => {
   initTooltips();
 });
 
-const props = defineProps({
-  details: Object,
-  category: Object,
+defineProps({
+  details: {
+    type: Object,
+    required: true,
+  },
+  category: {
+    type: Object,
+    required: true,
+  },
 });
 const emit = defineEmits(["removeExpense"]);
 

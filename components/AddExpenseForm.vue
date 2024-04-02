@@ -6,28 +6,30 @@ onMounted(() => {
 });
 
 const props = defineProps({
-  categories: Object,
+  categories: {
+    type: Object,
+    required: true,
+  },
 });
 const emit = defineEmits(["submitForm"]);
 const types = ref(["One time", "Monthly", "Anual"]);
 
-let categories = props.categories;
-let inputCategory = ref("");
-let savedCategory = ref("");
-let inputType = ref("");
-let savedType = ref("");
-let visibleCategories = ref(false);
-let visibleTypes = ref(false);
-let fadingInOutTypes = ref(false);
-let fadingInOutCategories = ref(false);
+const inputCategory = ref("");
+const savedCategory = ref("");
+const inputType = ref("");
+const savedType = ref("");
+const visibleCategories = ref(false);
+const visibleTypes = ref(false);
+const fadingInOutTypes = ref(false);
+const fadingInOutCategories = ref(false);
 
-let filteredCategories = computed(() => {
-  return categories.filter((item) => {
+const filteredCategories = computed(() => {
+  return props.categories.filter((item) => {
     return item.name.toLowerCase().includes(inputCategory.value.toLowerCase());
   });
 });
 
-let filteredTypes = computed(() => {
+const filteredTypes = computed(() => {
   return types.value.filter((item) => {
     return item.toLowerCase().includes(inputType.value.toLowerCase());
   });
@@ -80,7 +82,9 @@ function handleFocusCategory() {
 </script>
 
 <template>
-  <div class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md mobile:my-9">
+  <div
+    class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md mobile:my-9"
+  >
     <div class="bg-teal-700 text-white flex mobile:rounded-t-md">
       <div>
         <svg
@@ -105,7 +109,7 @@ function handleFocusCategory() {
         </span>
       </div>
     </div>
-    <Form @submit="onSubmit" class="mx-7 my-4 pt-3" v-slot="{ errors }">
+    <Form v-slot="{ errors }" class="mx-7 my-4 pt-3" @submit="onSubmit">
       <div>
         <label>Name</label>
         <div class="block mt-1 mb-5 text-gray-800">
@@ -171,9 +175,9 @@ function handleFocusCategory() {
         <label>Type</label>
         <div class="block mt-1 mb-5 text-gray-800 relative">
           <Field
+            v-model="inputType"
             type="text"
             name="types"
-            v-model="inputType"
             class="relative text-field peer"
             :rules="validateTextField"
             @focus="handleFocusType"
@@ -195,8 +199,9 @@ function handleFocusCategory() {
               No types match your search
             </div>
             <div
-              v-else
               v-for="type in filteredTypes"
+              v-else
+              :key="type"
               class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition ease-in-out duration-150"
               @click="savedType = type"
             >
@@ -208,9 +213,9 @@ function handleFocusCategory() {
         <label>Category</label>
         <div class="block mt-1 mb-3 text-gray-800 relative">
           <Field
+            v-model="inputCategory"
             type="text"
             name="categories"
-            v-model="inputCategory"
             class="relative text-field peer"
             :rules="validateTextField"
             @focus="handleFocusCategory"
@@ -232,8 +237,9 @@ function handleFocusCategory() {
               No categories match your search
             </div>
             <div
-              v-else
               v-for="category in filteredCategories"
+              v-else
+              :key="category.id"
               class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition ease-in-out duration-150"
               @click="savedCategory = category.name"
             >

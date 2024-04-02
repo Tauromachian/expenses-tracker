@@ -1,7 +1,13 @@
 <script setup>
 const props = defineProps({
-  expenses: Array,
-  categories: Array,
+  expenses: {
+    type: Array,
+    required: true,
+  },
+  categories: {
+    type: Array,
+    required: true,
+  },
 });
 
 const chartLabels = ref([]);
@@ -57,7 +63,7 @@ onMounted(() => {
   expensesPerCategory.sort((a, b) => b.total - a.total);
 
   if (expensesPerCategory.length > 5) {
-    let excedentArray = [...expensesPerCategory];
+    const excedentArray = [...expensesPerCategory];
     excedentArray.splice(0, 5);
 
     const excedentTotal = excedentArray.reduce((total, item) => {

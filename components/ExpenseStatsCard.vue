@@ -2,15 +2,19 @@
 import { useExpenseStore } from "../stores/expenses";
 
 const props = defineProps({
-  categories: Array,
+  categories: {
+    type: Array,
+    required: true,
+  },
 });
 const expenseStore = useExpenseStore();
 
-let type = ref("All");
-let expenses = ref([]);
-let chartKey = ref(0);
-let visibleTypes = ref(false);
-let fadingInOutTypes = ref(false);
+const type = ref("All");
+const expenses = ref([]);
+const chartKey = ref(0);
+const visibleTypes = ref(false);
+const fadingInOutTypes = ref(false);
+const expenseTypes = ref(["All", "One time", "Monthly", "Anual"]);
 
 onMounted(() => {
   loadData();
@@ -58,14 +62,14 @@ function removeExpense(id) {
 </script>
 
 <template>
-  <div class="w-full max-w-md flex mobile:items-center" id="expense-stats">
+  <div id="expense-stats" class="w-full max-w-md flex mobile:items-center">
     <div
       class="bg-white w-full h-min mobile:rounded-md mobile:shadow-md mobile:pt-4 px-7 pb-3"
       @click="visibleTypes = false"
     >
       <DonutChart
-        :key="chartKey"
         v-if="expenses.length"
+        :key="chartKey"
         :expenses="expenses"
         :categories="props.categories"
       ></DonutChart>
@@ -90,7 +94,8 @@ function removeExpense(id) {
             }"
           >
             <div
-              v-for="choice in ['All', 'One time', 'Monthly', 'Anual']"
+              v-for="choice in expenseTypes"
+              :key="choice"
               class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
               @click="changeType(choice)"
             >
@@ -105,13 +110,13 @@ function removeExpense(id) {
           No expenses to show yet!
         </div>
         <ExpenseDetails
-          v-else
           v-for="expense in expenses"
+          v-else
           :key="expense.id"
           :details="expense"
           :category="getCategory(expense.categories)"
-          @removeExpense="removeExpense(expense.id)"
           class="border-b last:border-0"
+          @remove-expense="removeExpense(expense.id)"
         ></ExpenseDetails>
       </div>
     </div>

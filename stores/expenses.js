@@ -1,3 +1,4 @@
+/*global defineStore, ref, computed*/
 export const useExpenseStore = defineStore("expenses", () => {
   // state
   let expenses = ref([]);

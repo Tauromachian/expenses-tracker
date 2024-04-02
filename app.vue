@@ -5,12 +5,12 @@ import { useExpenseStore } from "./stores/expenses";
 const expenseStore = useExpenseStore();
 
 const categories = ref(getCategories());
-let formKey = ref(0);
-let statsKey = ref(0);
-let showToast = ref(false);
-let fadingInOutToast = ref(false);
-let showScrollDown = ref(false);
-let fadingInOutArrow = ref(false);
+const formKey = ref(0);
+const statsKey = ref(0);
+const showToast = ref(false);
+const fadingInOutToast = ref(false);
+const showScrollDown = ref(false);
+const fadingInOutArrow = ref(false);
 
 function contactMe(url) {
   window.open(url);
@@ -72,7 +72,7 @@ function closeScrollDown() {
       <AddExpenseForm
         :key="formKey"
         :categories="categories"
-        @submitForm="submitForm"
+        @submit-form="submitForm"
       ></AddExpenseForm>
 
       <ExpenseStatsCard :key="statsKey" :categories="categories">
@@ -96,9 +96,9 @@ function closeScrollDown() {
           'opacity-100': fadingInOutArrow,
           'opacity-0': !fadingInOutArrow,
         }"
-        @scrollToStats="scrollToStats"
+        @scroll-to-stats="scrollToStats"
       ></ScrollDownArrow>
     </main>
-    <Footer @contactMe="contactMe"></Footer>
+    <Footer @contact-me="contactMe"></Footer>
   </div>
 </template>
