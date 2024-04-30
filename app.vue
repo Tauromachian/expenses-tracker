@@ -99,6 +99,5 @@ function closeScrollDown() {
         @scroll-to-stats="scrollToStats"
       ></ScrollDownArrow>
     </main>
-    <Footer @contact-me="contactMe"></Footer>
   </div>
 </template>
