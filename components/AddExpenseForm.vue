@@ -85,7 +85,7 @@ function handleFocusCategory() {
   <div
     class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md mobile:my-9"
   >
-    <div class="bg-teal-700 text-white flex mobile:rounded-t-md">
+    <div class="bg-teal-50 flex mobile:rounded-t-md">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@ function handleFocusCategory() {
           viewBox="0 0 24 24"
           strokeWidth="{1.5}"
           stroke="currentColor"
-          class="w-10 text-teal-700 bg-white rounded-xl my-5 mx-7 shadow-md p-2"
+          class="w-10 text-teal-700 rounded-xl my-5 mx-7 shadow-md p-2"
         >
           <path
             strokeLinecap="round"
@@ -103,7 +103,7 @@ function handleFocusCategory() {
         </svg>
       </div>
       <div class="my-auto">
-        <span class="font-bold block text-white text-lg">Add new expense</span>
+        <span class="font-bold block text-lg">Add new expense</span>
         <span class="text-xs">
           Fill in the form with the details of the expense
         </span>
@@ -255,7 +255,7 @@ function handleFocusCategory() {
 
         <div class="flex justify-end pt-5 pb-2">
           <button
-            class="px-3 py-2 bg-teal-50 text-teal-700 rounded-full focus:bg-teal-700 focus:text-white hover:bg-teal-700 hover:text-white transition ease-in-out duration-100"
+            class="px-3 bg-teal-700 text-white py-2 text-teal-700 rounded-full focus:bg-teal-700 focus:text-white hover:bg-teal-700 hover:text-white transition ease-in-out duration-100"
           >
             <span>Submit</span>
             <Icon
