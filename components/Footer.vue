@@ -36,11 +36,6 @@ function contactMe(url) {
       class="flex flex-col mobile:flex-row items-center text-center mobile:mb-5"
     >
       <span>©2024 Designed, created and maintained by </span>
-      <a
-        href="https://github.com/pfrito"
-        class="uppercase hover:text-gray-800 mobile:ml-2"
-        >Carlos</a
-      >
     </div>
   </footer>
 </template>
