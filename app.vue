@@ -12,10 +12,6 @@ const fadingInOutToast = ref(false);
 const showScrollDown = ref(false);
 const fadingInOutArrow = ref(false);
 
-function contactMe(url) {
-  window.open(url);
-}
-
 function submitForm(form) {
   // show scroll-down arrow
   showScrollDown.value = true;
