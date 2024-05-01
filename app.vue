@@ -62,7 +62,7 @@ function closeScrollDown() {
 <template>
   <div
     id="app"
-    class="bg-gray-100 text-gray-600 font-nunito flex h-auto flex-col justify-between"
+    class="bg-gray-100 text-gray-600 font-nunito flex h-auto flex-col justify-between min-h-screen"
   >
     <main class="flex flex-col items-center mb-10">
       <AddExpenseForm
