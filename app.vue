@@ -61,7 +61,7 @@ function closeScrollDown() {
 
 <template>
   <main
-    class="font-nunito min-h-screen flex bg-gray-100 flex-col items-center mb-10"
+    class="font-nunito min-h-screen flex bg-gray-100 flex-col items-center pb-10"
   >
     <AddExpenseForm
       :key="formKey"
