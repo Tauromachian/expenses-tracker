@@ -60,40 +60,37 @@ function closeScrollDown() {
 </script>
 
 <template>
-  <div
-    id="app"
-    class="bg-gray-100 text-gray-600 font-nunito flex h-auto flex-col justify-between min-h-screen"
+  <main
+    class="font-nunito min-h-screen flex bg-gray-100 flex-col items-center mb-10"
   >
-    <main class="flex flex-col items-center mb-10">
-      <AddExpenseForm
-        :key="formKey"
-        :categories="categories"
-        @submit-form="submitForm"
-      ></AddExpenseForm>
+    <AddExpenseForm
+      :key="formKey"
+      :categories="categories"
+      @submit-form="submitForm"
+    ></AddExpenseForm>
 
-      <ExpenseStatsCard :key="statsKey" :categories="categories">
-      </ExpenseStatsCard>
+    <ExpenseStatsCard :key="statsKey" :categories="categories">
+    </ExpenseStatsCard>
 
-      <ToastNotification
-        v-if="showToast"
-        class="transition-opacity duration-150 ease-in-out"
-        :class="{
-          'opacity-100': fadingInOutToast,
-          'opacity-0': !fadingInOutToast,
-        }"
-        message="New expense added!"
-        @close="closeToast"
-      ></ToastNotification>
+    <ToastNotification
+      v-if="showToast"
+      class="transition-opacity duration-150 ease-in-out"
+      :class="{
+        'opacity-100': fadingInOutToast,
+        'opacity-0': !fadingInOutToast,
+      }"
+      message="New expense added!"
+      @close="closeToast"
+    ></ToastNotification>
 
-      <ScrollDownArrow
-        v-if="showScrollDown"
-        class="transition-opacity duration-150 ease-in-out"
-        :class="{
-          'opacity-100': fadingInOutArrow,
-          'opacity-0': !fadingInOutArrow,
-        }"
-        @scroll-to-stats="scrollToStats"
-      ></ScrollDownArrow>
-    </main>
-  </div>
+    <ScrollDownArrow
+      v-if="showScrollDown"
+      class="transition-opacity duration-150 ease-in-out"
+      :class="{
+        'opacity-100': fadingInOutArrow,
+        'opacity-0': !fadingInOutArrow,
+      }"
+      @scroll-to-stats="scrollToStats"
+    ></ScrollDownArrow>
+  </main>
 </template>
