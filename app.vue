@@ -64,7 +64,7 @@ function closeScrollDown() {
     id="app"
     class="bg-gray-100 text-gray-600 font-nunito flex h-auto flex-col justify-between"
   >
-    <main class="flex flex-col items-center">
+    <main class="flex flex-col items-center mb-10">
       <AddExpenseForm
         :key="formKey"
         :categories="categories"
