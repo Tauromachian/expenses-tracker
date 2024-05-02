@@ -21,9 +21,8 @@ function submitForm(form) {
   setTimeout(() => {
     fadingInOutToast.value = true;
   }, 10);
-  setTimeout(() => {
-    closeToast();
-  }, 1500);
+
+  closeToast();
 }
 
 function scrollToStats() {
