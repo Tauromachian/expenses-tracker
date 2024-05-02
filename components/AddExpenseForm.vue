@@ -254,15 +254,13 @@ function handleFocusCategory() {
         </div>
 
         <div class="flex justify-end pt-5 pb-2">
-          <button
-            class="px-3 bg-teal-700 text-white py-2 text-teal-700 rounded-full focus:bg-teal-700 focus:text-white hover:bg-teal-700 hover:text-white transition ease-in-out duration-100"
-          >
+          <BaseButton>
             <span>Submit</span>
             <Icon
               name="material-symbols-light:arrow-forward-rounded"
               class="ml-1 w-5 h-5"
             />
-          </button>
+          </BaseButton>
         </div>
       </div>
     </Form>
