@@ -1,6 +1,6 @@
 <template>
   <button
-    class="text-white px-3 py-2 rounded-full transition"
+    class="px-3 py-2 rounded-full transition"
     :class="classes"
     v-bind="$attrs"
   >
@@ -22,7 +22,7 @@ const classes = computed(() => {
   const calculatedClasses = {
     text: "bg-transparent",
     regular:
-      "bg-teal-700 text-teal-700 focus:bg-teal-700 focus:text-white hover:bg-teal-700",
+      "bg-teal-700 text-white text-teal-700 focus:bg-teal-700 focus:text-white hover:bg-teal-700",
   };
 
   if (props.text) return calculatedClasses.text;
