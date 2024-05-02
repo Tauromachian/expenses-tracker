@@ -83,7 +83,7 @@ function handleFocusCategory() {
 
 <template>
   <div
-    class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md mobile:my-9"
+    class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md"
   >
     <div class="bg-teal-50 flex mobile:rounded-t-md">
       <div>
