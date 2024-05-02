@@ -6,7 +6,6 @@ const expenseStore = useExpenseStore();
 
 const categories = ref(getCategories());
 const formKey = ref(0);
-const statsKey = ref(0);
 const showToast = ref(false);
 const fadingInOutToast = ref(false);
 const showScrollDown = ref(false);
@@ -33,8 +32,6 @@ function submitForm(form) {
   setTimeout(() => {
     closeToast();
   }, 1500);
-
-  statsKey.value++;
 }
 
 function scrollToStats() {
@@ -70,8 +67,7 @@ function closeScrollDown() {
         @submit-form="submitForm"
       ></AddExpenseForm>
 
-      <ExpenseStatsCard :key="statsKey" :categories="categories">
-      </ExpenseStatsCard>
+      <ExpenseStatsCard :categories="categories"> </ExpenseStatsCard>
     </div>
 
     <ToastNotification
