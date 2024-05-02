@@ -55,12 +55,12 @@ function handleRemove() {
       </div>
       <div class="flex justify-between">
         <p class="text-sm">{{ details.description }}</p>
-        <button @click="handleRemove">
+        <BaseButton text @click="handleRemove">
           <Icon
             name="material-symbols-light:delete-outline"
             class="w-5 h-5 text-red-700 hover:text-red-800 transition-all duration-100 ease-in-out"
           />
-        </button>
+        </BaseButton>
       </div>
     </div>
   </div>
