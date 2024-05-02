@@ -60,17 +60,19 @@ function closeScrollDown() {
 </script>
 
 <template>
-  <main
-    class="font-nunito min-h-screen flex bg-gray-100 flex-col items-center pb-10"
-  >
-    <AddExpenseForm
-      :key="formKey"
-      :categories="categories"
-      @submit-form="submitForm"
-    ></AddExpenseForm>
+  <main class="font-nunito min-h-screen bg-gray-100">
+    <div
+      class="flex flex-col md:flex-row pt-10 items-center justify-center gap-5 md:items-start max-w-7xl mx-auto"
+    >
+      <AddExpenseForm
+        :key="formKey"
+        :categories="categories"
+        @submit-form="submitForm"
+      ></AddExpenseForm>
 
-    <ExpenseStatsCard :key="statsKey" :categories="categories">
-    </ExpenseStatsCard>
+      <ExpenseStatsCard :key="statsKey" :categories="categories">
+      </ExpenseStatsCard>
+    </div>
 
     <ToastNotification
       v-if="showToast"
