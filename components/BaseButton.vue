@@ -1,13 +1,34 @@
 <template>
   <button
-    class="bg-teal-700 text-white px-3 py-2 text-teal-700 rounded-full focus:bg-teal-700 focus:text-white hover:bg-teal-700 hover:text-white transition"
+    class="text-white px-3 py-2 rounded-full transition"
+    :class="classes"
+    v-bind="$attrs"
   >
     <slot></slot>
   </button>
 </template>
 
 <script setup>
-defineProps({});
+import { computed } from "vue";
+
+const props = defineProps({
+  text: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const classes = computed(() => {
+  const calculatedClasses = {
+    text: "bg-transparent",
+    regular:
+      "bg-teal-700 text-teal-700 focus:bg-teal-700 focus:text-white hover:bg-teal-700",
+  };
+
+  if (props.text) return calculatedClasses.text;
+
+  return calculatedClasses.regular;
+});
 </script>
 
 <style lang="scss" scoped></style>
