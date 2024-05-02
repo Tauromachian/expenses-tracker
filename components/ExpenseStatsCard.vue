@@ -63,62 +63,61 @@ function removeExpense(id) {
 
 <template>
   <div id="expense-stats" class="w-full max-w-md flex mobile:items-center">
-    <div
-      class="bg-white w-full h-min mobile:rounded-md mobile:shadow-md mobile:pt-4 px-7 pb-3"
-      @click="visibleTypes = false"
-    >
-      <DonutChart
-        v-if="expenses.length"
-        :key="chartKey"
-        :expenses="expenses"
-        :categories="props.categories"
-      ></DonutChart>
+    <AppCard @click="visibleTypes = false">
+      <AppCardBody>
+        <DonutChart
+          v-if="expenses.length"
+          :key="chartKey"
+          :expenses="expenses"
+          :categories="props.categories"
+        ></DonutChart>
 
-      <div class="flex justify-between mb-2">
-        <div class="text-gray-800 font-bold flex items-center relative">
-          <span class="text-lg">{{ type }} expenses</span>
-          <div class="text-gray-400 border-l-2 ml-3">
-            <BaseButton text @click.stop="handleEditType">
-              <Icon
-                name="fluent:edit-28-filled"
-                class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
-              ></Icon>
-            </BaseButton>
-          </div>
-          <div
-            v-if="visibleTypes"
-            class="font-normal bg-white w-32 mt-1 p-2 rounded-lg border border-gray-300 absolute top-0 right-7 z-10 transition-opacity duration-150 ease-in-out"
-            :class="{
-              'opacity-100': fadingInOutTypes,
-              'opacity-0': !fadingInOutTypes,
-            }"
-          >
+        <div class="flex justify-between mb-2">
+          <div class="text-gray-800 font-bold flex items-center relative">
+            <span class="text-lg">{{ type }} expenses</span>
+            <div class="text-gray-400 border-l-2 ml-3">
+              <BaseButton text @click.stop="handleEditType">
+                <Icon
+                  name="fluent:edit-28-filled"
+                  class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
+                ></Icon>
+              </BaseButton>
+            </div>
             <div
-              v-for="choice in expenseTypes"
-              :key="choice"
-              class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
-              @click="changeType(choice)"
+              v-if="visibleTypes"
+              class="font-normal bg-white w-32 mt-1 p-2 rounded-lg border border-gray-300 absolute top-0 right-7 z-10 transition-opacity duration-150 ease-in-out"
+              :class="{
+                'opacity-100': fadingInOutTypes,
+                'opacity-0': !fadingInOutTypes,
+              }"
             >
-              <span>{{ choice }}</span>
+              <div
+                v-for="choice in expenseTypes"
+                :key="choice"
+                class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
+                @click="changeType(choice)"
+              >
+                <span>{{ choice }}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="max-h-screen overflow-scroll scrollbar-none relative">
-        <div v-if="!expenses.length" class="text-center">
-          No expenses to show yet!
+        <div class="max-h-screen overflow-scroll scrollbar-none relative">
+          <div v-if="!expenses.length" class="text-center">
+            No expenses to show yet!
+          </div>
+          <ExpenseDetails
+            v-for="expense in expenses"
+            v-else
+            :key="expense.id"
+            :details="expense"
+            :category="getCategory(expense.categories)"
+            class="border-b last:border-0"
+            @remove-expense="removeExpense(expense.id)"
+          ></ExpenseDetails>
         </div>
-        <ExpenseDetails
-          v-for="expense in expenses"
-          v-else
-          :key="expense.id"
-          :details="expense"
-          :category="getCategory(expense.categories)"
-          class="border-b last:border-0"
-          @remove-expense="removeExpense(expense.id)"
-        ></ExpenseDetails>
-      </div>
-    </div>
+      </AppCardBody>
+    </AppCard>
   </div>
 </template>
