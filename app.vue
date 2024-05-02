@@ -13,14 +13,6 @@ const fadingInOutArrow = ref(false);
 
 function submitForm(form) {
   // show scroll-down arrow
-  showScrollDown.value = true;
-  setTimeout(() => {
-    fadingInOutArrow.value = true;
-  }, 10);
-  setTimeout(() => {
-    closeScrollDown();
-  }, 2000);
-
   formKey.value++;
   expenseStore.addExpense(form);
 
