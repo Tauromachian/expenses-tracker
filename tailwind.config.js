@@ -14,9 +14,9 @@ export default {
       fontFamily: {
         nunito: ["Nunito"],
       },
-    },
-    screens: {
-      mobile: "449px",
+      screens: {
+        mobile: "449px",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar"), require("flowbite/plugin")],
