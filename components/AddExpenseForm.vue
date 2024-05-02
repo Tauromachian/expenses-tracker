@@ -82,9 +82,7 @@ function handleFocusCategory() {
 </script>
 
 <template>
-  <div
-    class="bg-white w-full max-w-md h-min mobile:rounded-md mobile:shadow-md"
-  >
+  <AppCard>
     <div class="bg-teal-50 flex mobile:rounded-t-md">
       <div>
         <svg
@@ -264,5 +262,5 @@ function handleFocusCategory() {
         </div>
       </div>
     </Form>
-  </div>
+  </AppCard>
 </template>
