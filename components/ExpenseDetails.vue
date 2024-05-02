@@ -31,7 +31,7 @@ function handleRemove() {
       <Icon
         :name="category.icon"
         :color="category.color"
-        class="w-10 h-10 p-2 mr-3 rounded-full dynamic-bg"
+        class="w-10 h-10 p-2 mr-3 rounded-full"
       />
     </span>
 
@@ -65,9 +65,3 @@ function handleRemove() {
     </div>
   </div>
 </template>
-
-<style scoped>
-.dynamic-bg {
-  background-color: v-bind(category.bgColor);
-}
-</style>
