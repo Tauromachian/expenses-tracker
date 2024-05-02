@@ -120,7 +120,7 @@ function handleFocusCategory() {
             class="text-field"
           />
           <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
             >{{ errors.name }}</span
           >
         </div>
@@ -135,7 +135,7 @@ function handleFocusCategory() {
             class="text-field"
           />
           <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
             >{{ errors.description }}</span
           >
         </div>
@@ -167,7 +167,7 @@ function handleFocusCategory() {
             </svg>
           </div>
           <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
             >{{ errors.expense }}</span
           >
         </div>
@@ -184,12 +184,12 @@ function handleFocusCategory() {
             @blur="handleBlurType"
           />
           <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
             >{{ errors.types }}</span
           >
           <div
             v-if="visibleTypes"
-            class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out"
+            class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity"
             :class="{
               'opacity-100': fadingInOutTypes,
               'opacity-0': !fadingInOutTypes,
@@ -202,7 +202,7 @@ function handleFocusCategory() {
               v-for="type in filteredTypes"
               v-else
               :key="type"
-              class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition ease-in-out duration-150"
+              class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition"
               @click="savedType = type"
             >
               <span>{{ type }}</span>
@@ -222,12 +222,12 @@ function handleFocusCategory() {
             @blur="handleBlurCategory"
           />
           <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition ease-in-out duration-100"
+            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
             >{{ errors.categories }}</span
           >
           <div
             v-if="visibleCategories"
-            class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity duration-150 ease-in-out max-h-32 overflow-scroll scrollbar-none"
+            class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity max-h-32 overflow-scroll scrollbar-none"
             :class="{
               'opacity-100': fadingInOutCategories,
               'opacity-0': !fadingInOutCategories,
@@ -240,7 +240,7 @@ function handleFocusCategory() {
               v-for="category in filteredCategories"
               v-else
               :key="category.id"
-              class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition ease-in-out duration-150"
+              class="flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full transition"
               @click="savedCategory = category.name"
             >
               <Icon
