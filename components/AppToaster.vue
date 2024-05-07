@@ -36,6 +36,7 @@ defineExpose({ openToast });
       v-for="(oneMessage, index) in messages"
       :key="index + oneMessage"
       :message="oneMessage"
+      @close="messages.shift()"
     ></AppToast>
   </div>
 </template>
