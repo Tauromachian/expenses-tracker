@@ -24,7 +24,7 @@ const openToast = (message) => {
 const closeToast = () => {
   setTimeout(() => {
     messages.value.shift();
-  }, 160);
+  }, 6000);
 };
 
 defineExpose({ openToast });
