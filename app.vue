@@ -6,8 +6,7 @@ const expenseStore = useExpenseStore();
 
 const categories = ref(getCategories());
 const formKey = ref(0);
-const showToast = ref(false);
-const fadingInOutToast = ref(false);
+const appToaster = ref(null);
 const showScrollDown = ref(false);
 const fadingInOutArrow = ref(false);
 
@@ -15,14 +14,7 @@ function submitForm(form) {
   // show scroll-down arrow
   formKey.value++;
   expenseStore.addExpense(form);
-
-  // show notification
-  showToast.value = true;
-  setTimeout(() => {
-    fadingInOutToast.value = true;
-  }, 10);
-
-  closeToast();
+  appToaster.value.openToast("New expense added!");
 }
 
 function scrollToStats() {
@@ -30,13 +22,6 @@ function scrollToStats() {
   componente.scrollIntoView({ behavior: "smooth" });
 
   closeScrollDown();
-}
-
-function closeToast() {
-  fadingInOutToast.value = false;
-  setTimeout(() => {
-    showToast.value = false;
-  }, 160);
 }
 
 function closeScrollDown() {
@@ -61,20 +46,11 @@ function closeScrollDown() {
       <ExpenseStatsCard :categories="categories"> </ExpenseStatsCard>
     </div>
 
-    <ToastNotification
-      v-if="showToast"
-      class="transition-opacity duration-150 ease-in-out"
-      :class="{
-        'opacity-100': fadingInOutToast,
-        'opacity-0': !fadingInOutToast,
-      }"
-      message="New expense added!"
-      @close="closeToast"
-    ></ToastNotification>
+    <AppToaster ref="appToaster" :message="message"></AppToaster>
 
     <ScrollDownArrow
       v-if="showScrollDown"
-      class="transition-opacity duration-150 ease-in-out"
+      class="transition-opacity"
       :class="{
         'opacity-100': fadingInOutArrow,
         'opacity-0': !fadingInOutArrow,
