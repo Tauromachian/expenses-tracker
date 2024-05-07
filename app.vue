@@ -7,7 +7,6 @@ const expenseStore = useExpenseStore();
 const categories = ref(getCategories());
 const formKey = ref(0);
 const appToaster = ref(null);
-const showScrollDown = ref(false);
 const fadingInOutArrow = ref(false);
 
 function submitForm(form) {
@@ -26,9 +25,6 @@ function scrollToStats() {
 
 function closeScrollDown() {
   fadingInOutArrow.value = false;
-  setTimeout(() => {
-    showScrollDown.value = false;
-  }, 160);
 }
 </script>
 
@@ -49,7 +45,6 @@ function closeScrollDown() {
     <AppToaster ref="appToaster" :message="message"></AppToaster>
 
     <ScrollDownArrow
-      v-if="showScrollDown"
       class="transition-opacity"
       :class="{
         'opacity-100': fadingInOutArrow,
