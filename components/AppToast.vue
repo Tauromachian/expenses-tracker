@@ -9,7 +9,7 @@ defineProps({
 </script>
 
 <template>
-  <AppCard @click="emit('close')">
+  <AppCard class="cursor-pointer" @click="emit('close')">
     <AppCardBody class="flex">
       <div class="absolute left-6 top-6 text-green-500 h-fit">
         <svg
