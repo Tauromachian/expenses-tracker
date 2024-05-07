@@ -42,7 +42,7 @@ function closeScrollDown() {
       <ExpenseStatsCard :categories="categories"> </ExpenseStatsCard>
     </div>
 
-    <AppToaster ref="appToaster" :message="message"></AppToaster>
+    <AppToaster ref="appToaster"></AppToaster>
 
     <ScrollDownArrow
       class="transition-opacity"
