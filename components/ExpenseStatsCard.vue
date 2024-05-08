@@ -15,6 +15,9 @@ const visibleTypes = ref(false);
 const fadingInOutTypes = ref(false);
 const expenseTypes = ref(["All", "One time", "Monthly", "Anual"]);
 
+const menu = ref(null);
+let menuHandler = null;
+
 const expenses = computed(() => {
   const allExpenses = expenseStore.expenses;
   const expenses = [
@@ -60,12 +63,24 @@ function removeExpense(id) {
 
 onMounted(() => {
   expenseStore.loadExpenses();
+
+  menuHandler = (event) => {
+    if (!menu?.value.contains(event.target)) {
+      visibleTypes.value = false;
+    }
+  };
+
+  document.addEventListener("click", menuHandler);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("click", menuHandler);
 });
 </script>
 
 <template>
   <div id="expense-stats" class="w-full max-w-md flex mobile:items-center">
-    <AppCard @click="visibleTypes = false">
+    <AppCard>
       <AppCardBody>
         <DonutChart
           v-if="expenses?.length"
@@ -87,6 +102,7 @@ onMounted(() => {
             </div>
             <div
               v-if="visibleTypes"
+              ref="menu"
               class="font-normal bg-white w-32 mt-1 p-2 rounded-lg border border-gray-300 absolute top-0 right-7 z-10 transition-opacity duration-150 ease-in-out"
               :class="{
                 'opacity-100': fadingInOutTypes,
