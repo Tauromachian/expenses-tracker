@@ -1,19 +1,15 @@
-/*global defineStore, ref, computed*/
+/*global defineStore, ref*/
+
 export const useExpenseStore = defineStore("expenses", () => {
   // state
   let expenses = ref([]);
-
-  // getters
-  const getExpenses = computed(() => {
-    loadExpenses();
-    return expenses;
-  });
 
   // actions
   function addExpense(expense) {
     expense.id = calcMEX();
     expenses.value.push(expense);
     saveExpenses();
+    loadExpenses();
   }
 
   function removeExpense(id) {
@@ -28,12 +24,14 @@ export const useExpenseStore = defineStore("expenses", () => {
 
   // private functions for pinia persistency
   function saveExpenses() {
-    if (typeof localStorage !== "undefined") {
-      localStorage.setItem("expenses", JSON.stringify(expenses.value));
-    }
+    if (!localStorage) return;
+
+    localStorage.setItem("expenses", JSON.stringify(expenses.value));
   }
 
   function loadExpenses() {
+    if (!process.client) return;
+
     const savedExpenses = localStorage.getItem("expenses");
     expenses.value = savedExpenses ? JSON.parse(savedExpenses) : [];
   }
@@ -50,5 +48,11 @@ export const useExpenseStore = defineStore("expenses", () => {
     return mex;
   }
 
-  return { expenses, getExpenses, addExpense, removeExpense, clearExpenses };
+  return {
+    expenses,
+    addExpense,
+    removeExpense,
+    clearExpenses,
+    loadExpenses,
+  };
 });

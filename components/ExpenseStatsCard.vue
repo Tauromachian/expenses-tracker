@@ -10,26 +10,26 @@ const props = defineProps({
 const expenseStore = useExpenseStore();
 
 const type = ref("All");
-const expenses = ref([]);
 const chartKey = ref(0);
 const visibleTypes = ref(false);
 const fadingInOutTypes = ref(false);
 const expenseTypes = ref(["All", "One time", "Monthly", "Anual"]);
 
-onMounted(() => {
-  loadData();
-});
-
-function loadData() {
-  const allExpenses = expenseStore.getExpenses;
-  expenses.value = [
-    ...allExpenses.value.filter((expense) => {
+const expenses = computed(() => {
+  const allExpenses = expenseStore.expenses;
+  const expenses = [
+    ...allExpenses.filter((expense) => {
       if (type.value == "All") return true;
       return expense.types == type.value;
     }),
   ];
+
+  return expenses;
+});
+
+watch(expenses, () => {
   chartKey.value++;
-}
+});
 
 function handleEditType() {
   visibleTypes.value = true;
@@ -41,7 +41,6 @@ function handleEditType() {
 function changeType(data) {
   if (data != type.value) {
     type.value = data;
-    loadData();
   }
   fadingInOutTypes.value = false;
   visibleTypes.value = false;
@@ -57,8 +56,11 @@ function getCategory(category) {
 
 function removeExpense(id) {
   expenseStore.removeExpense(id);
-  loadData();
 }
+
+onMounted(() => {
+  expenseStore.loadExpenses();
+});
 </script>
 
 <template>
@@ -66,7 +68,7 @@ function removeExpense(id) {
     <AppCard @click="visibleTypes = false">
       <AppCardBody>
         <DonutChart
-          v-if="expenses.length"
+          v-if="expenses?.length"
           :key="chartKey"
           :expenses="expenses"
           :categories="props.categories"
@@ -104,7 +106,7 @@ function removeExpense(id) {
         </div>
 
         <div class="max-h-screen overflow-scroll scrollbar-none relative">
-          <div v-if="!expenses.length" class="text-center">
+          <div v-if="!expenses?.length" class="text-center">
             No expenses to show yet!
           </div>
           <ExpenseDetails
