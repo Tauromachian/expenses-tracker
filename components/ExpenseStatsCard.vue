@@ -83,6 +83,12 @@ onUnmounted(() => {
     <AppCard>
       <AppCardBody>
         <h2 class="text-lg font-bold text-gray-800">Expenses per category</h2>
+        <BaseButton text @click.stop="handleEditType">
+          <Icon
+            name="fluent:eye-28-filled"
+            class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
+          ></Icon>
+        </BaseButton>
 
         <DonutChart
           v-if="expenses?.length"
@@ -94,14 +100,6 @@ onUnmounted(() => {
         <div class="flex justify-between mb-2">
           <div class="text-gray-800 font-bold flex items-center relative">
             <span class="text-lg">{{ type }} expenses</span>
-            <div class="text-gray-400 border-l-2 ml-3">
-              <BaseButton text @click.stop="handleEditType">
-                <Icon
-                  name="fluent:filter-28-filled"
-                  class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
-                ></Icon>
-              </BaseButton>
-            </div>
             <div
               v-if="visibleTypes"
               ref="menu"
