@@ -95,7 +95,7 @@ onUnmounted(() => {
             <div class="text-gray-400 border-l-2 ml-3">
               <BaseButton text @click.stop="handleEditType">
                 <Icon
-                  name="fluent:edit-28-filled"
+                  name="fluent:filter-28-filled"
                   class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
                 ></Icon>
               </BaseButton>
