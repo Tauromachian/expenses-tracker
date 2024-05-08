@@ -82,6 +82,8 @@ onUnmounted(() => {
   <div id="expense-stats" class="w-full max-w-md flex mobile:items-center">
     <AppCard>
       <AppCardBody>
+        <h2 class="text-lg font-bold text-gray-800">Expenses per category</h2>
+
         <DonutChart
           v-if="expenses?.length"
           :key="chartKey"

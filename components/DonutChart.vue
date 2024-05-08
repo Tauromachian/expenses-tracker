@@ -91,7 +91,6 @@ onMounted(() => {
 
 <template>
   <ClientOnly>
-    <span class="text-lg font-bold text-gray-800">Expenses per category</span>
     <apexchart
       type="donut"
       :options="options"
