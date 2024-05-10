@@ -12,9 +12,12 @@
 import { computed } from "vue";
 
 const props = defineProps({
-  text: {
-    type: Boolean,
-    default: false,
+  variant: {
+    type: String,
+    default: "",
+    validator(value) {
+      return ["", "text", "outlined"].includes(value);
+    },
   },
 });
 
@@ -25,7 +28,7 @@ const classes = computed(() => {
       "bg-teal-700 text-white text-teal-700 focus:bg-teal-700 focus:text-white hover:bg-teal-700",
   };
 
-  if (props.text) return calculatedClasses.text;
+  if (props.variant === "text") return calculatedClasses.text;
 
   return calculatedClasses.regular;
 });
