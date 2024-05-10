@@ -45,16 +45,16 @@ function handleRemove() {
     </div>
 
     <div
-      class="w-full"
+      class="w-full flex"
       @mouseover="showTrash = true"
       @mouseout="showTrash = false"
     >
-      <div class="flex font-bold justify-between text-gray-800">
-        <span>{{ details.name }}</span>
-        <span class="text-sm">$ {{ details.expense }}</span>
+      <div class="flex flex-col text-gray-800">
+        <span class="font-bold">{{ details.name }}</span>
+        <p class="text-sm mt-2">{{ details.description }}</p>
       </div>
-      <div class="flex justify-between">
-        <p class="text-sm">{{ details.description }}</p>
+      <div class="flex flex-col ml-auto">
+        <span class="text-sm">$ {{ details.expense }}</span>
         <BaseButton text @click="handleRemove">
           <Icon
             name="material-symbols-light:delete-outline"
