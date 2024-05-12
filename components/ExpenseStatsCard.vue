@@ -11,12 +11,8 @@ const expenseStore = useExpenseStore();
 
 const type = ref("All");
 const chartKey = ref(0);
-const visibleTypes = ref(false);
-const fadingInOutTypes = ref(false);
-const expenseTypes = ref(["All", "One time", "Monthly", "Anual"]);
-
-const menu = ref(null);
-let menuHandler = null;
+const expenseTypes = ref(["All", "One time", "Monthly", "Annual"]);
+const selectedExpenseType = ref("All");
 
 const expenses = computed(() => {
   const allExpenses = expenseStore.expenses;
@@ -34,21 +30,6 @@ watch(expenses, () => {
   chartKey.value++;
 });
 
-function handleEditType() {
-  visibleTypes.value = true;
-  setTimeout(() => {
-    fadingInOutTypes.value = true;
-  }, 10);
-}
-
-function changeType(data) {
-  if (data != type.value) {
-    type.value = data;
-  }
-  fadingInOutTypes.value = false;
-  visibleTypes.value = false;
-}
-
 function getCategory(category) {
   return props.categories[
     props.categories.findIndex((item) => {
@@ -60,22 +41,6 @@ function getCategory(category) {
 function removeExpense(id) {
   expenseStore.removeExpense(id);
 }
-
-onMounted(() => {
-  expenseStore.loadExpenses();
-
-  menuHandler = (event) => {
-    if (!menu?.value.contains(event.target)) {
-      visibleTypes.value = false;
-    }
-  };
-
-  document.addEventListener("click", menuHandler);
-});
-
-onUnmounted(() => {
-  document.removeEventListener("click", menuHandler);
-});
 </script>
 
 <template>
@@ -83,12 +48,15 @@ onUnmounted(() => {
     <AppCard>
       <AppCardBody>
         <h2 class="text-lg font-bold text-gray-800">Expenses per category</h2>
-        <BaseButton text @click.stop="handleEditType">
-          <Icon
-            name="fluent:eye-28-filled"
-            class="ml-1 w-7 h-7 hover:text-gray-800 hover:bg-gray-100 p-1 rounded-full transition cursor-pointer duration-100 ease-in-out"
-          ></Icon>
-        </BaseButton>
+        <BaseButtonGroup v-model="selectedExpenseType">
+          <BaseButton
+            v-for="(expenseType, index) in expenseTypes"
+            :key="`expense-type-${index}`"
+            :value="expenseType"
+          >
+            {{ expenseType }}
+          </BaseButton>
+        </BaseButtonGroup>
 
         <DonutChart
           v-if="expenses?.length"
@@ -96,30 +64,6 @@ onUnmounted(() => {
           :expenses="expenses"
           :categories="props.categories"
         ></DonutChart>
-
-        <div class="flex justify-between mb-2">
-          <div class="text-gray-800 font-bold flex items-center relative">
-            <span class="text-lg">{{ type }} expenses</span>
-            <div
-              v-if="visibleTypes"
-              ref="menu"
-              class="font-normal bg-white w-32 mt-1 p-2 rounded-lg border border-gray-300 absolute top-0 right-7 z-10 transition-opacity duration-150 ease-in-out"
-              :class="{
-                'opacity-100': fadingInOutTypes,
-                'opacity-0': !fadingInOutTypes,
-              }"
-            >
-              <div
-                v-for="choice in expenseTypes"
-                :key="choice"
-                class="pl-2 flex h-7 items-center cursor-pointer hover:bg-gray-200 rounded-full"
-                @click="changeType(choice)"
-              >
-                <span>{{ choice }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div class="max-h-screen overflow-scroll scrollbar-none relative">
           <div v-if="!expenses?.length" class="text-center">
