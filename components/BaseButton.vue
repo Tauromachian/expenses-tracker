@@ -2,6 +2,7 @@
   <button
     class="px-3 py-2 rounded-full transition"
     :class="classes"
+    :value="value"
     v-bind="$attrs"
   >
     <slot></slot>
@@ -18,6 +19,10 @@ const props = defineProps({
     validator(value) {
       return ["", "text", "outlined"].includes(value);
     },
+  },
+  value: {
+    type: [String, Number],
+    default: "",
   },
 });
 
