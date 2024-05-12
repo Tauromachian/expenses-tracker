@@ -29,11 +29,12 @@ const props = defineProps({
 const classes = computed(() => {
   const calculatedClasses = {
     text: "bg-transparent",
+    outlined: "border bg-transparent border-teal-700",
     regular:
       "bg-teal-700 text-white text-teal-700 focus:bg-teal-700 focus:text-white hover:bg-teal-700",
   };
 
-  if (props.variant === "text") return calculatedClasses.text;
+  if (props.variant) return calculatedClasses[props.variant];
 
   return calculatedClasses.regular;
 });
