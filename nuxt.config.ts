@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@vee-validate/nuxt", "nuxt-icon", "@pinia/nuxt"],
+  modules: [
+    "@vee-validate/nuxt",
+    "nuxt-icon",
+    "@pinia/nuxt",
+    "@nuxt/eslint",
+  ],
   compatibilityDate: "2025-03-06",
 });
