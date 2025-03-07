@@ -13,4 +13,3 @@ export default defineNuxtConfig({
   modules: ["@vee-validate/nuxt", "nuxt-icon", "@pinia/nuxt"],
   compatibilityDate: "2025-03-06",
 });
-
