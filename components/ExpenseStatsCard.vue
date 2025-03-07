@@ -66,7 +66,7 @@ function removeExpense(id) {
         ></DonutChart>
 
         <div class="max-h-screen overflow-scroll scrollbar-none relative">
-          <div v-if="!expenses?.length" class="text-center">
+          <div v-if="!expenses?.length" class="text-center my-20">
             No expenses to show yet!
           </div>
           <ExpenseDetails
