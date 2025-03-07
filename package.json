@@ -15,15 +15,15 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.5.1",
-    "@vee-validate/nuxt": "^4.12.6",
-    "apexcharts": "^3.48.0",
-    "flowbite": "^2.3.0",
-    "nuxt": "^3.10.3",
-    "pinia": "^2.1.7",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0",
-    "vue3-apexcharts": "^1.5.2"
+    "@pinia/nuxt": "^0.10.1",
+    "@vee-validate/nuxt": "^4.15.0",
+    "apexcharts": "^4.5.0",
+    "flowbite": "^3.1.2",
+    "nuxt": "^3.15",
+    "pinia": "^3.0.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vue3-apexcharts": "^1.8.0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
