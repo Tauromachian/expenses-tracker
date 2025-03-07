@@ -13,7 +13,7 @@ export default {
     const genButtons = () => {
       return slots.default()[0].children.map((button) =>
         cloneVNode(button, {
-          variant: button.props.value === props.modelValue ? "outlined" : "",
+          variant: button.props.value === props.modelValue ? "" : "outlined",
           onClick: (event) => {
             const value = event.target.value;
             emit("update:modelValue", value);
