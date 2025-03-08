@@ -129,7 +129,6 @@ function handleFocusCategory() {
             type="text"
             name="description"
             :rules="validateTextField"
-            placeholder="Add expense information"
             class="text-field"
           />
           <span
