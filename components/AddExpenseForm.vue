@@ -239,13 +239,7 @@ function handleFocusCategory() {
         </div>
 
         <div class="flex justify-end pt-5 pb-2">
-          <BaseButton>
-            <span>Submit</span>
-            <Icon
-              name="material-symbols:arrow-forward-rounded"
-              class="ml-1 w-5 h-5"
-            />
-          </BaseButton>
+          <BaseButton> Submit </BaseButton>
         </div>
       </div>
     </Form>
