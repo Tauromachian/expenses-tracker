@@ -48,7 +48,7 @@ function removeExpense(id) {
     <AppCard>
       <AppCardBody>
         <h2 class="text-lg font-bold text-gray-800">Expenses per category</h2>
-        <BaseButtonGroup v-model="selectedExpenseType">
+        <BaseButtonGroup v-model="selectedExpenseType" class="mt-4">
           <BaseButton
             v-for="(expenseType, index) in expenseTypes"
             :key="`expense-type-${index}`"
