@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@nuxt/eslint": "^1.1.0",
+    "@nuxt/icon": "1.10.3",
     "@pinia/nuxt": "^0.10.1",
     "@vee-validate/nuxt": "^4.15.0",
     "apexcharts": "^4.5.0",
