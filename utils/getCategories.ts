@@ -1,13 +1,13 @@
 export default function () {
   const data = [
     {
-      icon: "material-symbols-light:light-group-rounded",
+      icon: "material-symbols:light-group-rounded",
       color: "#3385ff",
       bgColor: "#e6f0ff",
       name: "Utilities",
     },
     {
-      icon: "material-symbols-light:home",
+      icon: "material-symbols:home",
       color: "#990073",
       bgColor: "#ffe6f9",
       name: "House",
@@ -19,31 +19,31 @@ export default function () {
       name: "Pet",
     },
     {
-      icon: "material-symbols-light:shopping-cart",
+      icon: "material-symbols:shopping-cart",
       color: "#ff33ff",
       bgColor: "#ffe6ff",
       name: "Shop",
     },
     {
-      icon: "material-symbols-light:sports-basketball",
+      icon: "material-symbols:sports-basketball",
       color: "#00cca3",
       bgColor: "#e6fffa",
       name: "Entertainment",
     },
     {
-      icon: "material-symbols-light:fastfood",
+      icon: "material-symbols:fastfood",
       color: "#ffcc00",
       bgColor: "#fffae6",
       name: "Food",
     },
     {
-      icon: "material-symbols-light:directions-bus",
+      icon: "material-symbols:directions-bus",
       color: "#00b300",
       bgColor: "#e6ffe6",
       name: "Transportation",
     },
     {
-      icon: "material-symbols-light:travel-luggage-and-bags",
+      icon: "material-symbols:travel-luggage-and-bags",
       color: "#663300",
       bgColor: "#ffe6cc",
       name: "Travel",
@@ -73,7 +73,7 @@ export default function () {
       name: "Gift",
     },
     {
-      icon: "material-symbols-light:view-quilt",
+      icon: "material-symbols:view-quilt",
       color: "#4d4d4d",
       bgColor: "#e6e6e6",
       name: "Others",

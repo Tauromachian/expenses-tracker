@@ -57,7 +57,7 @@ function handleRemove() {
         <span class="text-sm">$ {{ details.expense }}</span>
         <BaseButton variant="text" @click="handleRemove">
           <Icon
-            name="material-symbols-light:delete-outline"
+            name="material-symbols:delete-outline"
             class="w-5 h-5 text-red-700 hover:text-red-800 transition-all duration-100 ease-in-out"
           />
         </BaseButton>

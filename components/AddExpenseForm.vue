@@ -84,6 +84,12 @@ function handleFocusCategory() {
 <template>
   <AppCard>
     <div class="bg-teal-50 flex mobile:rounded-t-md">
+      <Icon
+        icon="material-symbols:close"
+        class="w-10 h-10 text-teal-700 rounded-xl my-5 mx-7 shadow-md p-2"
+        width="24px"
+        height="24px"
+      />
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +260,7 @@ function handleFocusCategory() {
           <BaseButton>
             <span>Submit</span>
             <Icon
-              name="material-symbols-light:arrow-forward-rounded"
+              name="material-symbols:arrow-forward-rounded"
               class="ml-1 w-5 h-5"
             />
           </BaseButton>
