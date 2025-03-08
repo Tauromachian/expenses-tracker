@@ -1,6 +1,8 @@
 <script setup>
 import { initModals } from "flowbite";
 
+import { required } from "@/utils/rules";
+
 onMounted(() => {
   initModals();
 });
@@ -94,29 +96,10 @@ function handleFocusCategory() {
       <div>
         <label>Name</label>
         <div class="block mt-1 mb-5 text-gray-800">
-          <Field
-            type="text"
-            name="name"
-            :rules="validateTextField"
-            class="text-field"
-          />
+          <Field type="text" name="name" :rules="required" class="text-field" />
           <span
             class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
             >{{ errors.name }}</span
-          >
-        </div>
-
-        <label>Description</label>
-        <div class="block mt-1 mb-5 text-gray-800">
-          <Field
-            type="text"
-            name="description"
-            :rules="validateTextField"
-            class="text-field"
-          />
-          <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
-            >{{ errors.description }}</span
           >
         </div>
 
@@ -159,7 +142,7 @@ function handleFocusCategory() {
             type="text"
             name="types"
             class="relative text-field peer"
-            :rules="validateTextField"
+            :rules="required"
             @focus="handleFocusType"
             @blur="handleBlurType"
           />
@@ -197,7 +180,7 @@ function handleFocusCategory() {
             type="text"
             name="categories"
             class="relative text-field peer"
-            :rules="validateTextField"
+            :rules="required"
             @focus="handleFocusCategory"
             @blur="handleBlurCategory"
           />
@@ -231,6 +214,22 @@ function handleFocusCategory() {
               <span>{{ category.name }}</span>
             </div>
           </div>
+        </div>
+
+        <label>Description</label>
+        <div class="block mt-1 mb-5 text-gray-800">
+          <Field
+            as="textarea"
+            type="text"
+            name="description"
+            :rules="required"
+            class="text-field"
+          />
+          <span
+            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
+          >
+            {{ errors.description }}
+          </span>
         </div>
 
         <div class="flex justify-end pt-5 pb-2">
