@@ -7,7 +7,6 @@ import { categories } from "../utils/categories";
 
 const expenseStore = useExpenseStore();
 
-const categories = ref(categories);
 const formKey = ref(0);
 const appToaster = ref(null);
 const fadingInOutArrow = ref(false);
