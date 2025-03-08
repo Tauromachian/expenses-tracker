@@ -27,6 +27,7 @@
     "vue3-apexcharts": "^1.8.0"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols": "^1.2.15",
     "@nuxt/eslint": "^1.1.0",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
