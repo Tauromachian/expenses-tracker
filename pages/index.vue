@@ -3,11 +3,11 @@ import { ref } from "vue";
 
 import { useExpenseStore } from "../stores/expenses";
 
-import getCategories from "../utils/getCategories";
+import { categories } from "../utils/categories";
 
 const expenseStore = useExpenseStore();
 
-const categories = ref(getCategories());
+const categories = ref(categories);
 const formKey = ref(0);
 const appToaster = ref(null);
 const fadingInOutArrow = ref(false);
