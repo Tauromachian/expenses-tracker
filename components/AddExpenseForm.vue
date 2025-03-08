@@ -39,11 +39,6 @@ function onSubmit(values) {
   emit("submitForm", values);
 }
 
-function validateTextField(value) {
-  if (!value) return "This field is required";
-  return true;
-}
-
 function validateNumberField(value) {
   if (!value) return "This field is required";
   if (/^-?\d*\.?\d+$/.test(value) && parseFloat(value) > 0) return true;
