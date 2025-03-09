@@ -30,8 +30,8 @@ function handleRemove() {
     >
       <Icon
         :name="category.icon"
-        :color="category.color"
-        class="w-10 h-10 p-2 mr-3 rounded-full"
+        :style="{ color: category.color }"
+        class="w-8 h-8 p-2 mr-3 rounded-full"
       />
     </span>
 
