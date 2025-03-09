@@ -129,10 +129,7 @@ function handleFocusCategory() {
               />
             </svg>
           </div>
-          <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
-            >{{ errors.expense }}</span
-          >
+          <ErrorText> {{ errors.expense }}</ErrorText>
         </div>
 
         <label>Type</label>
@@ -146,10 +143,8 @@ function handleFocusCategory() {
             @focus="handleFocusType"
             @blur="handleBlurType"
           />
-          <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
-            >{{ errors.types }}</span
-          >
+
+          <ErrorText>{{ errors.types }}</ErrorText>
           <div
             v-if="visibleTypes"
             class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity"
@@ -184,10 +179,8 @@ function handleFocusCategory() {
             @focus="handleFocusCategory"
             @blur="handleBlurCategory"
           />
-          <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
-            >{{ errors.categories }}</span
-          >
+          <ErrorText>{{ errors.categories }}</ErrorText>
+
           <div
             v-if="visibleCategories"
             class="bg-white w-full mt-1 p-2 rounded-lg border border-gray-300 absolute z-10 transition-opacity max-h-32 overflow-scroll scrollbar-none"
@@ -225,11 +218,8 @@ function handleFocusCategory() {
             :rules="required"
             class="text-field"
           />
-          <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
-          >
-            {{ errors.description }}
-          </span>
+
+          <ErrorText>{{ errors.description }}</ErrorText>
         </div>
 
         <div class="flex justify-end pt-5 pb-2">
