@@ -208,8 +208,8 @@ function handleFocusCategory() {
             >
               <Icon
                 :name="category.icon"
-                class="w-9 h-9 px-2"
-                :color="category.color"
+                class="w-5 h-5 pl-2 mr-4"
+                :style="{ color: category.color }"
               />
               <span>{{ category.name }}</span>
             </div>
