@@ -24,6 +24,7 @@ const visibleCategories = ref(false);
 const visibleTypes = ref(false);
 const fadingInOutTypes = ref(false);
 const fadingInOutCategories = ref(false);
+const formRef = ref(null);
 
 const filteredCategories = computed(() => {
   return props.categories.filter((item) => {
@@ -39,6 +40,7 @@ const filteredTypes = computed(() => {
 
 function onSubmit(values) {
   emit("submitForm", values);
+  formRef.value.resetForm();
 }
 
 function validateNumberField(value) {
@@ -92,7 +94,12 @@ function handleFocusCategory() {
         </span>
       </div>
     </div>
-    <Form v-slot="{ errors }" class="mx-7 my-4 pt-3" @submit="onSubmit">
+    <Form
+      v-slot="{ errors }"
+      class="mx-7 my-4 pt-3"
+      @submit="onSubmit"
+      ref="formRef"
+    >
       <div>
         <label>Name</label>
         <div class="block mt-1 mb-5 text-gray-800">

@@ -23,7 +23,6 @@ function scrollToStats() {
 
 function submitForm(form) {
   // show scroll-down arrow
-  formKey.value++;
   expenseStore.addExpense(form);
 
   if (!appToaster?.value) return;
@@ -42,7 +41,6 @@ function closeScrollDown() {
       class="flex flex-col md:flex-row pt-10 items-center justify-center gap-5 md:items-start max-w-7xl mx-auto"
     >
       <AddExpenseForm
-        :key="formKey"
         :categories="categories"
         @submit-form="submitForm"
       ></AddExpenseForm>
