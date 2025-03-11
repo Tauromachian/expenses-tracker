@@ -40,10 +40,10 @@ function closeScrollDown() {
     <h1 class="text-3xl font-bold mb-5">Expenses Tracker</h1>
 
     <div class="flex flex-col md:flex-row gap-5 md:items-start">
-      <AddExpenseForm
+      <ExpenseForm
         :categories="categories"
         @submit-form="submitForm"
-      ></AddExpenseForm>
+      ></ExpenseForm>
 
       <ExpenseStatsCard :categories="categories"> </ExpenseStatsCard>
     </div>

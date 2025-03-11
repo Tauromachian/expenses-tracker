@@ -58,12 +58,12 @@ function removeExpense(id) {
           </BaseButton>
         </BaseButtonGroup>
 
-        <DonutChart
+        <ExpenseDonutChart
           v-if="expenses?.length"
           :key="chartKey"
           :expenses="expenses"
           :categories="props.categories"
-        ></DonutChart>
+        ></ExpenseDonutChart>
 
         <div class="max-h-screen overflow-scroll scrollbar-none relative">
           <div v-if="!expenses?.length" class="text-center my-20">
