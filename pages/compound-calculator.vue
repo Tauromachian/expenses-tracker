@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="max-w-7xl mx-auto pt-10">
+  <div>
     <h1 class="text-3xl font-bold mb-5">Compound Calculator</h1>
 
     <div class="flex flex-col md:flex-row gap-5 md:items-start">
