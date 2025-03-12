@@ -18,8 +18,8 @@ const links = [
     <li v-for="link in links" :key="link.to" class="me-2">
       <NuxtLink
         :to="link.to"
-        class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
-        active-class="inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
+        class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-500"
+        active-class="text-white bg-primary-500 hover:bg-primary-400"
       >
         {{ link.name }}
       </NuxtLink>
