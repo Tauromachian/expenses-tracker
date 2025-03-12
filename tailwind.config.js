@@ -17,6 +17,19 @@ export default {
       screens: {
         mobile: "449px",
       },
+      colors: {
+        primary: {
+          100: "#bbf6f2",
+          200: "#8ef1e9",
+          300: "#61ebe0",
+          400: "#33e5d7",
+          500: "#0F766E",
+          600: "#1accbe",
+          700: "#149e94",
+          800: "#0e7169",
+          900: "#09443f",
+        },
+      },
     },
   },
   plugins: [require("tailwind-scrollbar"), require("flowbite/plugin")],
