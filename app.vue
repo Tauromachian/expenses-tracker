@@ -2,6 +2,10 @@
 
 <template>
   <main class="font-nunito min-h-screen bg-gray-100">
-    <NuxtPage />
+    <div class="max-w-7xl mx-auto pt-10">
+      <NavBar class="mb-8"></NavBar>
+
+      <NuxtPage />
+    </div>
   </main>
 </template>
