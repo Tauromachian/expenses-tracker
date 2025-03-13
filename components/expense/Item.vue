@@ -24,16 +24,11 @@ function handleRemove() {
 
 <template>
   <div class="flex items-center py-2">
-    <span
-      :data-tooltip-target="`tooltip-${expense.id}`"
-      data-tooltip-trigger="hover"
-    >
-      <Icon
-        :name="category.icon"
-        :style="{ color: category.color }"
-        class="w-8 h-8 p-2 mr-3 rounded-full"
-      />
-    </span>
+    <Icon
+      :name="category.icon"
+      :style="{ color: category.color }"
+      class="w-8 h-8 p-2 mr-3 rounded-full"
+    />
 
     <div class="w-full flex">
       <div class="flex flex-col text-gray-800">
