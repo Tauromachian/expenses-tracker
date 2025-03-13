@@ -17,7 +17,7 @@ defineProps({
 });
 const emit = defineEmits(["removeExpense"]);
 
-function handleRemove() {
+function remove() {
   emit("removeExpense");
 }
 </script>
@@ -37,7 +37,7 @@ function handleRemove() {
       </div>
       <div class="flex flex-col ml-auto">
         <span class="text-sm">$ {{ expense.expense }}</span>
-        <BaseButton variant="text" @click="handleRemove">
+        <BaseButton variant="text" @click="remove">
           <Icon
             name="material-symbols:delete-outline"
             class="w-5 h-5 text-red-700 hover:text-red-800 transition-all duration-100 ease-in-out"
