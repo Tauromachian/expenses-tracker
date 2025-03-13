@@ -69,7 +69,7 @@ function removeExpense(id) {
           <div v-if="!expenses?.length" class="text-center my-20">
             No expenses to show yet!
           </div>
-          <ExpenseDetails
+          <ExpenseItem
             v-for="expense in expenses"
             v-else
             :key="expense.id"
@@ -77,7 +77,7 @@ function removeExpense(id) {
             :category="getCategory(expense.categories)"
             class="border-b last:border-0"
             @remove-expense="removeExpense(expense.id)"
-          ></ExpenseDetails>
+          ></ExpenseItem>
         </div>
       </AppCardBody>
     </AppCard>
