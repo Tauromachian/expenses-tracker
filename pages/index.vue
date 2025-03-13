@@ -37,7 +37,7 @@ function closeScrollDown() {
     <h1 class="text-3xl font-bold mb-5">Expenses Tracker</h1>
 
     <div class="flex flex-col md:flex-row gap-5 md:items-start">
-      <ExpenseForm @submit-form="submitForm"></ExpenseForm>
+      <ExpenseForm @submit="submitForm"></ExpenseForm>
 
       <ExpenseStatsCard />
     </div>

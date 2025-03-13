@@ -8,7 +8,7 @@ onMounted(() => {
   initModals();
 });
 
-const emit = defineEmits(["submitForm"]);
+const emit = defineEmits(["submit"]);
 const types = ref(["One time", "Monthly", "Anual"]);
 
 const inputCategory = ref("");
@@ -34,7 +34,7 @@ const filteredTypes = computed(() => {
 });
 
 function onSubmit(values) {
-  emit("submitForm", values);
+  emit("submit", values);
   formRef.value.resetForm();
 }
 
