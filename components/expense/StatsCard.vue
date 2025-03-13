@@ -76,7 +76,7 @@ function removeExpense(id) {
             :expense="expense"
             :category="getCategory(expense.categories)"
             class="border-b last:border-0"
-            @remove-expense="removeExpense(expense.id)"
+            @remove="removeExpense(expense.id)"
           ></ExpenseItem>
         </div>
       </AppCardBody>

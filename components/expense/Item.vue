@@ -18,7 +18,7 @@ defineProps({
 const emit = defineEmits(["removeExpense"]);
 
 function remove() {
-  emit("removeExpense");
+  emit("remove");
 }
 </script>
 
