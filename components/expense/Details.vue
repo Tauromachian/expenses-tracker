@@ -44,11 +44,7 @@ function handleRemove() {
       <div class="tooltip-arrow" data-popper-arrow></div>
     </div>
 
-    <div
-      class="w-full flex"
-      @mouseover="showTrash = true"
-      @mouseout="showTrash = false"
-    >
+    <div class="w-full flex">
       <div class="flex flex-col text-gray-800">
         <span class="font-bold">{{ details.name }}</span>
         <p class="text-sm mt-2">{{ details.description }}</p>
