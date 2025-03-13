@@ -9,21 +9,17 @@ const props = defineProps({
 });
 const expenseStore = useExpenseStore();
 
-const type = ref("All");
 const chartKey = ref(0);
 const expenseTypes = ref(["All", "One time", "Monthly", "Annual"]);
 const selectedExpenseType = ref("All");
 
 const expenses = computed(() => {
   const allExpenses = expenseStore.expenses;
-  const expenses = [
-    ...allExpenses.filter((expense) => {
-      if (type.value == "All") return true;
-      return expense.types == type.value;
-    }),
-  ];
 
-  return expenses;
+  return allExpenses.filter((expense) => {
+    if (selectedExpenseType.value === "All") return true;
+    return expense.types === selectedExpenseType.value;
+  });
 });
 
 watch(expenses, () => {
