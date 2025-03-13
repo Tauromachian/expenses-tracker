@@ -13,7 +13,7 @@ const chartKey = ref(0);
 const expenseTypes = ref(["All", "One time", "Monthly", "Annual"]);
 const selectedExpenseType = ref("All");
 
-const expenses = computed(() => {
+const filteredExpenses = computed(() => {
   const allExpenses = expenseStore.expenses;
 
   return allExpenses.filter((expense) => {
@@ -22,9 +22,7 @@ const expenses = computed(() => {
   });
 });
 
-watch(expenses, () => {
-  chartKey.value++;
-});
+watch(filteredExpenses, () => chartKey.value++);
 
 function getCategory(category) {
   return props.categories[
@@ -32,10 +30,6 @@ function getCategory(category) {
       return item.name == category;
     })
   ];
-}
-
-function removeExpense(id) {
-  expenseStore.removeExpense(id);
 }
 </script>
 
@@ -55,24 +49,24 @@ function removeExpense(id) {
         </BaseButtonGroup>
 
         <ExpenseDonutChart
-          v-if="expenses?.length"
+          v-if="filteredExpenses?.length"
           :key="chartKey"
-          :expenses="expenses"
+          :expenses="filteredExpenses"
           :categories="props.categories"
         ></ExpenseDonutChart>
 
         <div class="max-h-screen overflow-scroll scrollbar-none relative">
-          <div v-if="!expenses?.length" class="text-center my-20">
+          <div v-if="!filteredExpenses?.length" class="text-center my-20">
             No expenses to show yet!
           </div>
           <template v-else>
             <ExpenseItem
-              v-for="expense in expenses"
+              v-for="expense in filteredExpenses"
               :key="expense.id"
               :expense="expense"
               :category="getCategory(expense.categories)"
               class="border-b last:border-0"
-              @remove="removeExpense(expense.id)"
+              @remove="expenseStore.removeExpense(expense.id)"
             ></ExpenseItem>
           </template>
         </div>
