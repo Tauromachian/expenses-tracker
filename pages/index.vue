@@ -3,8 +3,6 @@ import { ref } from "vue";
 
 import { useExpenseStore } from "../stores/expenses";
 
-import { categories } from "../utils/categories";
-
 const expenseStore = useExpenseStore();
 
 const appToaster = ref(null);
@@ -39,12 +37,9 @@ function closeScrollDown() {
     <h1 class="text-3xl font-bold mb-5">Expenses Tracker</h1>
 
     <div class="flex flex-col md:flex-row gap-5 md:items-start">
-      <ExpenseForm
-        :categories="categories"
-        @submit-form="submitForm"
-      ></ExpenseForm>
+      <ExpenseForm @submit-form="submitForm"></ExpenseForm>
 
-      <ExpenseStatsCard :categories="categories"> </ExpenseStatsCard>
+      <ExpenseStatsCard />
     </div>
 
     <AppToaster ref="appToaster"></AppToaster>

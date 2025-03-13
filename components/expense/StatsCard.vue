@@ -1,12 +1,8 @@
 <script setup>
 import { useExpenseStore } from "../stores/expenses";
 
-const props = defineProps({
-  categories: {
-    type: Array,
-    required: true,
-  },
-});
+import { categories } from "../utils/categories";
+
 const expenseStore = useExpenseStore();
 
 const chartKey = ref(0);
@@ -25,8 +21,8 @@ const filteredExpenses = computed(() => {
 watch(filteredExpenses, () => chartKey.value++);
 
 function getCategory(category) {
-  return props.categories[
-    props.categories.findIndex((item) => {
+  return categories[
+    categories.findIndex((item) => {
       return item.name == category;
     })
   ];
@@ -52,7 +48,7 @@ function getCategory(category) {
           v-if="filteredExpenses?.length"
           :key="chartKey"
           :expenses="filteredExpenses"
-          :categories="props.categories"
+          :categories="categories"
         ></ExpenseDonutChart>
 
         <div class="max-h-screen overflow-scroll scrollbar-none relative">

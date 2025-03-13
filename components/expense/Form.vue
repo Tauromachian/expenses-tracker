@@ -2,17 +2,12 @@
 import { initModals } from "flowbite";
 
 import { required } from "@/utils/rules";
+import { categories } from "../utils/categories";
 
 onMounted(() => {
   initModals();
 });
 
-const props = defineProps({
-  categories: {
-    type: Object,
-    required: true,
-  },
-});
 const emit = defineEmits(["submitForm"]);
 const types = ref(["One time", "Monthly", "Anual"]);
 
@@ -27,7 +22,7 @@ const fadingInOutCategories = ref(false);
 const formRef = ref(null);
 
 const filteredCategories = computed(() => {
-  return props.categories.filter((item) => {
+  return categories.filter((item) => {
     return item.name.toLowerCase().includes(inputCategory.value.toLowerCase());
   });
 });
