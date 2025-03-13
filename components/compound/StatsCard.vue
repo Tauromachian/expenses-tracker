@@ -9,16 +9,16 @@ const props = defineProps({
 });
 const expenseStore = useExpenseStore();
 
-const type = ref("All");
+const type = ref("Annual");
 const chartKey = ref(0);
-const expenseTypes = ref(["All", "One time", "Monthly", "Annual"]);
-const selectedExpenseType = ref("All");
+const expenseTypes = ref(["Monthly", "Annual"]);
+const selectedExpenseType = ref("Annual");
 
 const expenses = computed(() => {
   const allExpenses = expenseStore.expenses;
   const expenses = [
     ...allExpenses.filter((expense) => {
-      if (type.value == "All") return true;
+      if (type.value == "Annual") return true;
       return expense.types == type.value;
     }),
   ];
@@ -69,15 +69,15 @@ function removeExpense(id) {
           <div v-if="!expenses?.length" class="text-center my-20">
             No expenses to show yet!
           </div>
-          <ExpenseItem
+          <ExpenseDetails
             v-for="expense in expenses"
             v-else
             :key="expense.id"
-            :expense="expense"
+            :details="expense"
             :category="getCategory(expense.categories)"
             class="border-b last:border-0"
             @remove-expense="removeExpense(expense.id)"
-          ></ExpenseItem>
+          ></ExpenseDetails>
         </div>
       </AppCardBody>
     </AppCard>

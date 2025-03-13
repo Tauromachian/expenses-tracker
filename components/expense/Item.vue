@@ -6,7 +6,7 @@ onMounted(() => {
 });
 
 defineProps({
-  details: {
+  expense: {
     type: Object,
     required: true,
   },
@@ -25,7 +25,7 @@ function handleRemove() {
 <template>
   <div class="flex items-center py-2">
     <span
-      :data-tooltip-target="`tooltip-${details.id}`"
+      :data-tooltip-target="`tooltip-${expense.id}`"
       data-tooltip-trigger="hover"
     >
       <Icon
@@ -37,11 +37,11 @@ function handleRemove() {
 
     <div class="w-full flex">
       <div class="flex flex-col text-gray-800">
-        <span class="font-bold">{{ details.name }}</span>
-        <p class="text-sm mt-2">{{ details.description }}</p>
+        <span class="font-bold">{{ expense.name }}</span>
+        <p class="text-sm mt-2">{{ expense.description }}</p>
       </div>
       <div class="flex flex-col ml-auto">
-        <span class="text-sm">$ {{ details.expense }}</span>
+        <span class="text-sm">$ {{ expense.expense }}</span>
         <BaseButton variant="text" @click="handleRemove">
           <Icon
             name="material-symbols:delete-outline"
