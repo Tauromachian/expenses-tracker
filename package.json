@@ -17,11 +17,14 @@
   "dependencies": {
     "@nuxt/icon": "1.10.3",
     "@pinia/nuxt": "^0.10.1",
+    "@tailwindcss/vite": "^4.0.13",
     "@vee-validate/nuxt": "^4.15.0",
     "apexcharts": "^4.5.0",
     "flowbite": "^3.1.2",
     "nuxt": "^3.15",
     "pinia": "^3.0.1",
+    "tailwind-scrollbar": "^4.0.1",
+    "tailwindcss": "^4.0.13",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue3-apexcharts": "^1.8.0"
@@ -29,9 +32,6 @@
   "devDependencies": {
     "@iconify-json/material-symbols": "^1.2.15",
     "@nuxt/eslint": "^1.1.0",
-    "postcss": "^8.4.35",
-    "prettier": "^3.2.5",
-    "tailwind-scrollbar": "^3.1.0",
-    "tailwindcss": "^3.4.1"
+    "prettier": "^3.2.5"
   }
 }

@@ -1,11 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer components {
-  .text-field {
-    @apply w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-teal-800 focus:ring-teal-800;
-  }
+@theme {
+  --color-primary-100: #bbf6f2;
+  --color-primary-200: #8ef1e9;
+  --color-primary-300: #61ebe0;
+  --color-primary-400: #33e5d7;
+  --color-primary-500: #0f766e;
+  --color-primary-600: #1accbe;
+  --color-primary-700: #149e94;
+  --color-primary-800: #0e7169;
+  --color-primary-900: #09443f;
+  --font-nunito: Nunito, sans-serif;
+}
+
+@utility text-field {
+  @apply w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-teal-800 focus:ring-teal-800;
 }
