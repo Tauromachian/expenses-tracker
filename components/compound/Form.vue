@@ -27,6 +27,7 @@
         <AppInput
           label="Amount"
           type="text"
+          input-class="pl-12"
           name="expense"
           :rules="validateNumberField"
           :error="errors.expense"

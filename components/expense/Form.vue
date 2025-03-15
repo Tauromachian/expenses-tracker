@@ -107,6 +107,7 @@ function handleFocusCategory() {
         label="Amount"
         type="text"
         name="expense"
+        input-class="pl-12"
         :rules="validateNumberField"
         :error="errors.expense"
       >
