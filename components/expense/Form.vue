@@ -95,24 +95,22 @@ function handleFocusCategory() {
       @submit="onSubmit"
       ref="formRef"
     >
-      <div>
-        <label>Name</label>
-        <div class="block mt-1 mb-5 text-gray-800">
-          <Field type="text" name="name" :rules="required" class="text-field" />
-          <span
-            class="text-red-500 block absolute empty:opacity-0 opacity-100 transition"
-            >{{ errors.name }}</span
-          >
-        </div>
+      <AppInput
+        label="Name"
+        name="name"
+        :error="errors.name"
+        :rules="required"
+        type="text"
+      ></AppInput>
 
-        <label>Amount</label>
-        <div class="block mt-1 mb-5 text-gray-800 relative">
-          <Field
-            type="text"
-            name="expense"
-            :rules="validateNumberField"
-            class="pl-12 text-field peer"
-          />
+      <AppInput
+        label="Amount"
+        type="text"
+        name="expense"
+        :rules="validateNumberField"
+        :error="errors.expense"
+      >
+        <template #prepend>
           <div
             class="bg-teal-50 text-teal-700 absolute inset-y-0 left-0 px-2 flex items-center pointer-events-none rounded-s-lg border peer-focus:border-teal-800"
           >
@@ -131,9 +129,10 @@ function handleFocusCategory() {
               />
             </svg>
           </div>
-          <ErrorText> {{ errors.expense }}</ErrorText>
-        </div>
+        </template>
+      </AppInput>
 
+      <div>
         <label>Type</label>
         <div class="block mt-1 mb-5 text-gray-800 relative">
           <Field
@@ -211,18 +210,13 @@ function handleFocusCategory() {
           </div>
         </div>
 
-        <label>Description</label>
-        <div class="block mt-1 mb-5 text-gray-800">
-          <Field
-            as="textarea"
-            type="text"
-            name="description"
-            :rules="required"
-            class="text-field"
-          />
-
-          <ErrorText>{{ errors.description }}</ErrorText>
-        </div>
+        <AppInput
+          label="Description"
+          as="textarea"
+          type="text"
+          name="description"
+          :error="errors.description"
+        ></AppInput>
 
         <div class="flex justify-end pt-5 pb-2">
           <BaseButton> Submit </BaseButton>
