@@ -5,7 +5,7 @@
     <div class="bg-teal-50 flex gap-4 mobile:rounded-t-md py-5 px-7">
       <Icon
         name="material-symbols:chart-data-outline-rounded"
-        class="w-8 h-8 text-teal-700"
+        class="text-3xl text-primary-700"
       />
       <div class="my-auto">
         <span class="font-bold block text-lg">Add new investment</span>
