@@ -11,5 +11,5 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  compatibilityDate: "2025-03-06",
+  compatibilityDate: "2025-03-14",
 });
