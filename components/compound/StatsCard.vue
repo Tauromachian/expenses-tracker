@@ -64,7 +64,7 @@ function removeExpense(id) {
           :categories="props.categories"
         ></ExpenseDonutChart>
 
-        <div class="max-h-screen overflow-scroll scrollbar-none relative">
+        <div class="max-h-screen overflow-scroll relative">
           <div v-if="!expenses?.length" class="text-center my-20">
             No expenses to show yet!
           </div>
