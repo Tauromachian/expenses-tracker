@@ -52,7 +52,7 @@ function getCategory(category) {
 
         <div class="max-h-screen overflow-scroll relative">
           <div v-if="!filteredExpenses?.length" class="text-center my-20">
-            No expenses to show yet!
+            No expenses! Add one
           </div>
           <template v-else>
             <ExpenseItem

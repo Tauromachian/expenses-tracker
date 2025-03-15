@@ -66,7 +66,7 @@ function removeExpense(id) {
 
         <div class="max-h-screen overflow-scroll relative">
           <div v-if="!expenses?.length" class="text-center my-20">
-            No expenses to show yet!
+            No investments! Add one
           </div>
           <ExpenseDetails
             v-for="expense in expenses"
