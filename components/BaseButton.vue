@@ -1,6 +1,6 @@
 <template>
   <button
-    class="px-3 py-2 rounded-full transition"
+    class="px-3 py-2 rounded-full transition cursor-pointer"
     :class="classes"
     :value="value"
     v-bind="$attrs"
@@ -39,5 +39,3 @@ const classes = computed(() => {
   return calculatedClasses.regular;
 });
 </script>
-
-<style lang="scss" scoped></style>
