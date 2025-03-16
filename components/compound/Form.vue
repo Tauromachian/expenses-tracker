@@ -1,4 +1,6 @@
 <script setup>
+import { positiveNumber, required } from "@/utils/rules";
+
 const formRef = ref(null);
 
 function onSubmit(values) {
@@ -33,6 +35,14 @@ function onSubmit(values) {
           name="name"
           :error="errors.name"
           :rules="required"
+          type="text"
+        ></AppInput>
+
+        <AppInput
+          label="Year"
+          name="year"
+          :error="errors.name"
+          :rules="positiveNumber"
           type="text"
         ></AppInput>
 
