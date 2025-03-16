@@ -6,7 +6,6 @@
 
     <div class="flex flex-col md:flex-row gap-5 md:items-start">
       <CompoundForm
-        :key="formKey"
         :categories="categories"
         @submit-form="submitForm"
       ></CompoundForm>
