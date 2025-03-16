@@ -12,9 +12,7 @@ const links = [
 </script>
 
 <template>
-  <ul
-    class="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400"
-  >
+  <ul class="flex flex-wrap text-sm font-medium text-center text-gray-700">
     <li v-for="link in links" :key="link.to" class="me-2">
       <NuxtLink
         :to="link.to"
