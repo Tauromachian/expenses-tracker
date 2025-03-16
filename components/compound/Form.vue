@@ -51,7 +51,7 @@ function onSubmit(values) {
           type="text"
           input-class="pl-12"
           name="amount"
-          :rules="validateNumberField"
+          :rules="positiveNumber"
           :error="errors.expense"
         >
           <template #prepend>
