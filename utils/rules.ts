@@ -3,3 +3,10 @@ export function required(value: string) {
 
   return true;
 }
+
+export function positiveNumber(value: string) {
+  if (!value) return "This field is required";
+
+  if (/^[0-9]+$/.test(value) && parseFloat(value) > 0) return true;
+  return "Invalid amount";
+}

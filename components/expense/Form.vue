@@ -1,8 +1,8 @@
 <script setup>
 import { initModals } from "flowbite";
 
-import { required } from "@/utils/rules";
-import { categories } from "../utils/categories";
+import { required, positiveNumber } from "@/utils/rules";
+import { categories } from "@/utils/categories";
 
 onMounted(() => {
   initModals();
@@ -36,12 +36,6 @@ const filteredTypes = computed(() => {
 function onSubmit(values) {
   emit("submit", values);
   formRef.value.resetForm();
-}
-
-function validateNumberField(value) {
-  if (!value) return "This field is required";
-  if (/^-?\d*\.?\d+$/.test(value) && parseFloat(value) > 0) return true;
-  return "Invalid amount";
 }
 
 function handleBlurCategory() {
@@ -108,7 +102,7 @@ function handleFocusCategory() {
         type="text"
         name="expense"
         input-class="pl-12"
-        :rules="validateNumberField"
+        :rules="positiveNumber"
         :error="errors.expense"
       >
         <template #prepend>
