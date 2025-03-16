@@ -1,4 +1,11 @@
-<script setup></script>
+<script setup>
+const formRef = ref(null);
+
+function onSubmit(values) {
+  emit("submit", values);
+  formRef.value.resetForm();
+}
+</script>
 
 <template>
   <AppCard>
@@ -14,7 +21,12 @@
         </span>
       </div>
     </div>
-    <Form v-slot="{ errors }" class="mx-7 my-4 pt-3" @submit="onSubmit">
+    <Form
+      v-slot="{ errors }"
+      class="mx-7 my-4 pt-3"
+      @submit="onSubmit"
+      ref="formRef"
+    >
       <div>
         <AppInput
           label="Name"
