@@ -28,7 +28,7 @@
           label="Amount"
           type="text"
           input-class="pl-12"
-          name="expense"
+          name="amount"
           :rules="validateNumberField"
           :error="errors.expense"
         >
