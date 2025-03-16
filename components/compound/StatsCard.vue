@@ -47,16 +47,6 @@ function removeExpense(id) {
   <div id="expense-stats" class="w-full max-w-md flex mobile:items-center">
     <AppCard>
       <AppCardBody>
-        <BaseButtonGroup v-model="selectedExpenseType" class="mt-4">
-          <BaseButton
-            v-for="(expenseType, index) in expenseTypes"
-            :key="`expense-type-${index}`"
-            :value="expenseType"
-          >
-            {{ expenseType }}
-          </BaseButton>
-        </BaseButtonGroup>
-
         <ExpenseDonutChart
           v-if="expenses?.length"
           :key="chartKey"
