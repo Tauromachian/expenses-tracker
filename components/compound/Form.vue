@@ -1,5 +1,5 @@
 <script setup>
-import { positiveNumber, required } from "@/utils/rules";
+import { positiveNumber } from "@/utils/rules";
 
 const formRef = ref(null);
 
