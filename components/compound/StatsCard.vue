@@ -18,7 +18,7 @@ function removeInvestment(id) {
 
         <div class="max-h-screen overflow-scroll relative">
           <div v-if="!expenses?.length" class="text-center my-20">
-            No investments! Add one
+            Nothing to compound! Add one
           </div>
           <InvestmentItem
             v-for="expense in expenses"
