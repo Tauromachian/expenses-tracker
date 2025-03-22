@@ -23,7 +23,7 @@ function onSubmit(values) {
           Calculate compounding interest
         </span>
         <span class="text-xs">
-          Fill in the form with the details of the compunding
+          Fill in the form with the details of the compounding
         </span>
       </div>
     </div>
