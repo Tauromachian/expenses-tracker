@@ -60,7 +60,7 @@ function onSubmit(values) {
         </AppInput>
 
         <div class="flex justify-end pt-5 pb-2">
-          <BaseButton type="submit"> Submit </BaseButton>
+          <BaseButton type="submit"> Compound it baby! </BaseButton>
         </div>
       </div>
     </Form>
