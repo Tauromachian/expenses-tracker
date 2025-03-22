@@ -3,6 +3,8 @@ import { positiveNumber } from "@/utils/rules";
 
 const formRef = ref(null);
 
+const emit = defineEmits(["submit"]);
+
 function onSubmit(values) {
   emit("submit", values);
   formRef.value.resetForm();
