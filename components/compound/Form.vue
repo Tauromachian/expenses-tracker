@@ -17,9 +17,11 @@ function onSubmit(values) {
         class="text-3xl text-primary-700"
       />
       <div class="my-auto">
-        <span class="font-bold block text-lg">Add new investment</span>
+        <span class="font-bold block text-lg">
+          Calculate compounding interest
+        </span>
         <span class="text-xs">
-          Fill in the form with the details of the investment
+          Fill in the form with the details of the compunding
         </span>
       </div>
     </div>
@@ -31,16 +33,8 @@ function onSubmit(values) {
     >
       <div>
         <AppInput
-          label="Name"
-          name="name"
-          :error="errors.name"
-          :rules="required"
-          type="text"
-        ></AppInput>
-
-        <AppInput
-          label="Year"
-          name="year"
+          label="Percent"
+          name="percent"
           :error="errors.name"
           :rules="positiveNumber"
           type="text"
@@ -63,16 +57,8 @@ function onSubmit(values) {
           </template>
         </AppInput>
 
-        <AppInput
-          label="Description"
-          as="textarea"
-          type="text"
-          name="description"
-          :error="errors.description"
-        ></AppInput>
-
         <div class="flex justify-end pt-5 pb-2">
-          <BaseButton> Submit </BaseButton>
+          <BaseButton type="submit"> Submit </BaseButton>
         </div>
       </div>
     </Form>
